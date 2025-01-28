@@ -1,0 +1,9 @@
+.godot/
+.import/
+export.cfg
+data_*/
+dist/
+.godot/editor/filesystem_cache8
+.godot/editor/project_metadata.cfg
+.godot/global_script_class_cache.cfg
+.godot/uid_cache.bin
