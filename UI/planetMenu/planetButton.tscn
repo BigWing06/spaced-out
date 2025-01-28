@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/planetMenu/planetButton.gd" type="Script" id=1]
+[ext_resource path="res://baseTheme.tres" type="Theme" id=2]
+
+[node name="Button" type="Button"]
+margin_right = 89.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_Button_pressed"]

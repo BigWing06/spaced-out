@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://baseTheme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/pauseMenu/pauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://UI/pauseMenu/pauseMenuBackground.png" type="Texture" id=3]
+
+[node name="ColorRect" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -150.0
+margin_right = 125.0
+margin_bottom = 150.0
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+margin_top = 24.0
+margin_bottom = 60.0
+theme = ExtResource( 1 )
+text = "Paused"
+align = 1
+
+[node name="Button" type="Button" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -45.0
+margin_right = 72.0
+margin_bottom = -3.0
+theme = ExtResource( 1 )
+text = "Resume"
+
+[node name="Button2" type="Button" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = 51.0
+margin_right = 72.0
+margin_bottom = 93.0
+theme = ExtResource( 1 )
+text = "Quit"
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ColorRect/Button2" to="." method="_on_Button2_pressed"]

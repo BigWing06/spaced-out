@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://baseTheme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/planetMenu/planetMenu.gd" type="Script" id=2]
+[ext_resource path="res://UI/planetMenu/planetInfoDisplay.tscn" type="PackedScene" id=3]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -299.0
+margin_top = -221.5
+margin_right = 299.0
+margin_bottom = 221.5
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -259.0
+margin_top = 104.0
+margin_right = 259.0
+margin_bottom = 140.0
+theme = ExtResource( 1 )
+text = "Planet Menu"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -139.0
+margin_top = 152.0
+margin_right = 139.0
+margin_bottom = 166.0
+text = "Select the planet you would like to travel to"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 238.0
+margin_top = 186.0
+margin_right = 447.0
+margin_bottom = 494.0
+rect_scale = Vector2( 0.986777, 1 )
+alignment = 1
+
+[node name="infoDisplay" parent="." instance=ExtResource( 3 )]
+margin_left = 486.0
+margin_top = 219.0
+margin_right = 736.0
+margin_bottom = 482.0
