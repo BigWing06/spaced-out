@@ -1,11 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://baseTheme.tres" type="Theme" id=1]
 [ext_resource path="res://UI/pauseMenu/pauseMenu.gd" type="Script" id=2]
 [ext_resource path="res://UI/pauseMenu/pauseMenuBackground.png" type="Texture" id=3]
+[ext_resource path="res://UI/pauseMenu/resumeButton.png" type="Texture" id=4]
+[ext_resource path="res://UI/pauseMenu/resumeButtonPressed.png" type="Texture" id=5]
+[ext_resource path="res://UI/pauseMenu/startButton.png" type="Texture" id=6]
+[ext_resource path="res://UI/pauseMenu/quitButtonPressed.png" type="Texture" id=7]
 
 [node name="ColorRect" type="CanvasLayer"]
 script = ExtResource( 2 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_right = 1031.0
+margin_bottom = 605.0
+color = Color( 0, 0, 0, 0.301961 )
 
 [node name="ColorRect" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -26,7 +35,7 @@ theme = ExtResource( 1 )
 text = "Paused"
 align = 1
 
-[node name="Button" type="Button" parent="ColorRect"]
+[node name="Button" type="TextureButton" parent="ColorRect"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -36,9 +45,10 @@ margin_top = -45.0
 margin_right = 72.0
 margin_bottom = -3.0
 theme = ExtResource( 1 )
-text = "Resume"
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
 
-[node name="Button2" type="Button" parent="ColorRect"]
+[node name="Button2" type="TextureButton" parent="ColorRect"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -48,7 +58,8 @@ margin_top = 51.0
 margin_right = 72.0
 margin_bottom = 93.0
 theme = ExtResource( 1 )
-text = "Quit"
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
 
 [connection signal="pressed" from="ColorRect/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="ColorRect/Button2" to="." method="_on_Button2_pressed"]

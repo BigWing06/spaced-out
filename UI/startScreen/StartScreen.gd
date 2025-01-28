@@ -31,4 +31,4 @@ func _on_loadButton_pressed():
 	for key in content['upgrades'].keys():
 		content['upgrades'][key] = int(content['upgrades'][key])
 	globals.upgradeLevels = content['upgrades']
-	globals.playerInfo = content['playerInfo']
+	globals.playerInfo = content['player']

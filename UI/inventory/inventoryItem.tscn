@@ -26,10 +26,14 @@ margin_bottom = 45.0
 expand = true
 
 [node name="amountText" type="Label" parent="."]
-margin_left = 17.5
-margin_top = 17.5
-margin_right = 57.5
-margin_bottom = 57.5
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -97.5
+margin_top = -20.0
+margin_right = 97.5
+margin_bottom = 20.0
 theme = ExtResource( 3 )
 align = 1
 valign = 1

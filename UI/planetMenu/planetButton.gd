@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 onready var globals = get_node("/root/global")
 var planetNum
 
@@ -13,7 +13,16 @@ func _ready():
 
 func showPlanet(num):
 	planetNum = num
-	text = globals.planetInfo[planetNum]['name']
+	$Label.text = globals.planetInfo[planetNum]['name']
+	
 
 func _on_Button_pressed():
 	get_node('/root/worldMain/planetMenu/infoDisplay').displayPlanet(planetNum)
+
+
+func _on_Button_mouse_entered():
+	$Label.add_color_override("font_color", '#000000')
+
+
+func _on_Button_mouse_exited():
+	$Label.add_color_override("font_color", '#FFFFFF')

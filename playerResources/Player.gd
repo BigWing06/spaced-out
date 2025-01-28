@@ -31,7 +31,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed('moveLeft'):
 		velocity.x -= movementSpeed/4
 	if not Input.is_action_pressed("moveRight") and not Input.is_action_pressed("moveLeft") and velocity.x != 0:
-		velocity.x += movementSpeed/4*(velocity.x/abs(velocity.x)*-1)
+		if velocity.x > 0:
+			velocity.x += movementSpeed/4*(velocity.x/abs(velocity.x)*-1)
+			velocity.x = clamp(velocity.x, 0, 100)
+		else:
+			velocity.x += movementSpeed/4*(velocity.x/abs(velocity.x)*-1)
+			velocity.x = clamp(velocity.x, -100, 0)
 	velocity.y = clamp(velocity.y, jumpAmount, gravity*25)
 	velocity.x = clamp(velocity.x, -movementSpeed, movementSpeed)
 	

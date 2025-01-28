@@ -18,15 +18,27 @@ func _ready():
 func squareUpdate(pos):
 	var keys = globals.worldInfo[globals.currentPlanet]['world']['tileMapList'].keys()
 	var rock45 = globals.worldInfo[globals.currentPlanet]['world']['tileMapKey']['rock45']
+	var resourceTilemap = get_node('/root/worldMain/resourceTileMap')
+	var tileMap45Resource = null
+	if globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][pos][1] > 1:
+		tileMap45Resource = globals.resourceInfo[int(globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][pos][1])]['tilemap'][1]
 	#if Vector2(pos.x, pos.y-1) in keys and Vector2(pos.x+1, pos.y) in keys and Vector2(pos.x, pos.y-1) in keys and Vector2(pos.x-1, pos.y) in keys and Vector2(pos.x, pos.y+1) in keys and Vector2(pos.x+1, pos.y) in keys and Vector2(pos.x, pos.y+1) in keys and Vector2(pos.x-1, pos.y) in keys:
 	if globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x, pos.y-1)][0] == 0 and globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x+1, pos.y)][0] == 0 and globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x, pos.y)][0] == 3:
 		set_cellv(pos, rock45)
+		if tileMap45Resource != null:
+			resourceTilemap.set_cellv(pos, tileMap45Resource)
 	elif globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x, pos.y-1)][0] == 0 and globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x-1, pos.y)][0] == 0 and globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x, pos.y)][0] == 3:
 		set_cellv(pos, rock45, true, false)
+		if tileMap45Resource != null:
+			resourceTilemap.set_cellv(pos, tileMap45Resource, true, false)
 	elif globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x, pos.y+1)][0] == 0 and globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x+1, pos.y)][0] == 0 and globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x, pos.y)][0] == 3:
 		set_cellv(pos, rock45, false, true)
+		if tileMap45Resource != null:
+			resourceTilemap.set_cellv(pos, tileMap45Resource, false, true)
 	elif globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x, pos.y+1)][0] == 0 and globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x-1, pos.y)][0] == 0 and globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][Vector2(pos.x, pos.y)][0] == 3:
 		set_cellv(pos, rock45, true, true)
+		if tileMap45Resource != null:
+			resourceTilemap.set_cellv(pos, tileMap45Resource, true, true)
 	elif globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][pos][0] == 3:
 		set_cellv(pos, globals.worldInfo[globals.currentPlanet]['world']['tileMapKey']['rock'])
 		
@@ -69,6 +81,8 @@ func render(pos):
 					globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][coord] = [4, 0]
 				elif round(sin((PI/24)*coord.x)*(int(map.get_noise_2d(int(int(coord.x)/24), 8)*10000)%3))+coord.y < 8:
 					globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][coord] = [0, 0]
+				elif coord == Vector2(200, 100):
+					globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][coord] = [0, 9]
 				else:
 					if round(sin((PI/24)*coord.x)*(int(map.get_noise_2d(int(int(coord.x)/24), 8)*10000)%3))+coord.y < 11:
 						 globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][coord] = [3, 1]
@@ -78,7 +92,6 @@ func render(pos):
 						generateOre(coord, [3, globals.oreGenerationKey[globals.currentPlanet][1]], rawValue)
 					elif globals.isBetween(.35, .351, abs(rawValue)) or globals.isBetween(.25, .251, abs(rawValue)):
 						generateOre(coord, [3, globals.oreGenerationKey[globals.currentPlanet][2]], rawValue)
-						print(globals.oreGenerationKey[globals.currentPlanet][2])
 					else:
 						globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][coord] = [3, 1]
 						
@@ -88,13 +101,15 @@ func render(pos):
 					renderedCells.append(coord)
 					var squareValue = globals.worldInfo[globals.currentPlanet]['world']['tileMapList'][coord]
 					if squareValue[1] != 1 and squareValue[1] != 0: #runs if there is a resouce there
-						resourceTilemap.set_cell(coord.x, coord.y, globals.resourceInfo[int(squareValue[1])]['tilemap'])
+						resourceTilemap.set_cell(coord.x, coord.y, globals.resourceInfo[int(squareValue[1])]['tilemap'][0])
 					elif squareValue[0] == 4:
 						set_cell(coord.x, coord.y, globals.worldInfo[globals.currentPlanet]['world']['tileMapKey']['border'])
 					elif squareValue[0] == 0: #-10 represents air
 						set_cell(coord.x, coord.y, -1)
 					else:
 						set_cell(coord.x, coord.y, globals.worldInfo[globals.currentPlanet]['world']['tileMapKey']['rock'])
+					if -round(sin((PI/24)*coord.x)*(int(map.get_noise_2d(int(int(coord.x)/24), 8)*10000)%3))+8 < coord.y:
+						get_node('/root/worldMain/backgroundTileMap').set_cellv(coord, globals.worldInfo[globals.currentPlanet]['world']['tileMapKey']['mined'])
 					newRenders.append(coord)
 	for i in range(len(newRenders)):
 		squareUpdate(newRenders[i])

@@ -7,6 +7,7 @@ func toggleEscape():
 var inventory = false
 
 func _process(delta):
+	$background.position.x = get_node('/root/worldMain/Player').position.x
 	if Input.is_action_just_pressed("pause"):
 		globals.currentMenu.toggleEscape()
 	if Input.is_action_just_pressed("inventory"):
@@ -28,6 +29,7 @@ func _ready():
 	$saveTimer.start()
 	$oxygenTimer.start()
 	$healthTimer.start()
+	$background.texture = load('res://tiles/Planet' + str(int(globals.currentPlanet)+1) + 'Background.png')
 
 func _on_saveTimer_timeout(): #Runs when the save timer reaches 0
 	globals.save()
@@ -41,7 +43,7 @@ func _on_oxygenTimer_timeout():
 	get_node('/root/worldMain/hud/oxygenBar').set_max(100+20*globals.upgradeLevels['ship'])
 	$oxygenTimer.start()
 	if globals.oxygenLevel == 0:
-		adjustHealth(10)
+		adjustHealth(-10)
 
 func _on_spaceShipCollision_body_entered(body):
 	$oxygenTimer.wait_time = 1

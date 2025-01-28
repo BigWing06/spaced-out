@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://UI/startScreen/startButton.png" type="Texture" id=1]
 [ext_resource path="res://Roboto-Black.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/startScreen/StartScreen.gd" type="Script" id=3]
 [ext_resource path="res://baseTheme.tres" type="Theme" id=4]
+[ext_resource path="res://UI/startScreen/loadButton.png" type="Texture" id=5]
+[ext_resource path="res://UI/startScreen/startButtonHovered.png" type="Texture" id=6]
+[ext_resource path="res://UI/startScreen/loadButtonHovered.png" type="Texture" id=7]
+[ext_resource path="res://UI/startScreen/startBackground.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -16,37 +21,51 @@ layer = 2
 follow_viewport_enable = true
 script = ExtResource( 3 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 margin_left = 2.0
 margin_top = -1.0
 margin_right = 1026.0
 margin_bottom = 599.0
-color = Color( 0, 0, 0, 1 )
+texture = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 376.0
-margin_top = 112.0
-margin_right = 657.0
-margin_bottom = 173.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.5
+margin_top = -150.5
+margin_right = 140.5
+margin_bottom = -89.5
 theme = SubResource( 2 )
 text = "Spaced Out"
 align = 1
 
-[node name="newButton" type="Button" parent="."]
-margin_left = 432.0
-margin_top = 224.0
-margin_right = 589.0
-margin_bottom = 266.0
+[node name="newButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.0
+margin_top = -52.0
+margin_right = 75.0
+margin_bottom = -2.0
 theme = ExtResource( 4 )
-text = "New World"
+texture_normal = ExtResource( 1 )
+texture_hover = ExtResource( 6 )
 
-[node name="loadButton" type="Button" parent="."]
-margin_left = 424.0
-margin_top = 304.0
-margin_right = 600.0
-margin_bottom = 346.0
+[node name="loadButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.0
+margin_top = 19.0
+margin_right = 75.0
+margin_bottom = 69.0
 theme = ExtResource( 4 )
-text = "Load World"
+texture_normal = ExtResource( 5 )
+texture_hover = ExtResource( 7 )
 
 [connection signal="pressed" from="newButton" to="." method="_on_newButton_pressed"]
 [connection signal="pressed" from="loadButton" to="." method="_on_loadButton_pressed"]
