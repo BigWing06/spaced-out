@@ -1236,6 +1236,7 @@ extents = Vector2( 144, 136 )
 script = ExtResource( 6 )
 
 [node name="background" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, 1000 )
 z_index = -100
 
@@ -1258,7 +1259,7 @@ tile_set = SubResource( 10 )
 format = 1
 
 [node name="spaceShip" type="Sprite" parent="."]
-position = Vector2( 232, -72 )
+position = Vector2( 232, 552 )
 z_index = -10
 texture = ExtResource( 23 )
 offset = Vector2( 0, -140.5 )
@@ -1266,7 +1267,7 @@ offset = Vector2( 0, -140.5 )
 [node name="spaceShipCollision" type="Area2D" parent="spaceShip"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spaceShip/spaceShipCollision"]
-position = Vector2( 0, -144 )
+position = Vector2( -2, -136 )
 shape = SubResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]

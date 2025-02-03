@@ -20,6 +20,7 @@ var upgradeLevels = {'drill':0, 'ship':0}
 var playerAtShip = false
 var world = null
 var worldPath = "/root/Main/Viewports/ViewportContainer/ViewportPlayer1/worldMain"
+var main = null
 
 func newGame():
 	currentMenu = null

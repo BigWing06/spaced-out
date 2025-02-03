@@ -42,10 +42,12 @@ func toggleEscape():
 		visible = true
 		inventoryUpdate()
 		get_node(global.worldPath+'/inventory/craftMenu/upgradeViewer').checkResource()
+		global.main.splitScreenOff()
 	else:
 		globals.currentMenu = get_node(global.worldPath+'/pauseMenu')
 		get_parent().setPauseState(false)
 		visible = false
+		global.main.splitScreenOn()
 
 func inventoryUpdate():
 	for key in globals.inventory.keys():

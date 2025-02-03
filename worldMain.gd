@@ -7,7 +7,7 @@ func toggleEscape():
 var inventory = false
 
 func _process(delta):
-	$background.position.x = get_node(global.worldPath+'/Player').position.x
+	###$background.position.x = get_node(global.worldPath+'/Player').position.x
 	if Input.is_action_just_pressed("pause"):
 		globals.currentMenu.toggleEscape()
 	if Input.is_action_just_pressed("inventory"):
@@ -30,8 +30,7 @@ func _ready():
 	$saveTimer.start()
 	$oxygenTimer.start()
 	$healthTimer.start()
-	$background.texture = load('res://tiles/Planet' + str(int(globals.currentPlanet)+1) + 'Background.png')
-
+	###$background.texture = load('res://tiles/Planet' + str(int(globals.currentPlanet)+1) + 'Background.png')
 func _on_saveTimer_timeout(): #Runs when the save timer reaches 0
 	globals.save()
 
