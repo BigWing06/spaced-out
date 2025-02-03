@@ -25,6 +25,7 @@ func setPauseState(state):
 		$Player.set_physics_process(true)
 
 func _ready():
+	globals.world = self
 	globals.currentMenu = self
 	$saveTimer.start()
 	$oxygenTimer.start()

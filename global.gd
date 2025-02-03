@@ -18,6 +18,8 @@ var oxygenLevel = 100
 var currentMenu = null
 var upgradeLevels = {'drill':0, 'ship':0}
 var playerAtShip = false
+var world = null
+
 
 func newGame():
 	currentMenu = null
