@@ -7,14 +7,14 @@ func toggleEscape():
 var inventory = false
 
 func _process(delta):
-	$background.position.x = get_node('/root/worldMain/Player').position.x
+	$background.position.x = get_node(global.worldPath+'/Player').position.x
 	if Input.is_action_just_pressed("pause"):
 		globals.currentMenu.toggleEscape()
 	if Input.is_action_just_pressed("inventory"):
 		$inventory.toggleEscape()
 	if Input.is_action_just_pressed("planetMenu"):
 		if globals.playerAtShip:
-			get_node('/root/worldMain/planetMenu').toggleEscape()
+			get_node(global.worldPath+'/planetMenu').toggleEscape()
 		
 func setPauseState(state):
 	if state == true:
@@ -41,7 +41,7 @@ func _on_oxygenTimer_timeout():
 	else:
 		globals.oxygenLevel -= 2
 	globals.oxygenLevel = clamp(globals.oxygenLevel, 0, 100+20*globals.upgradeLevels['ship'])
-	get_node('/root/worldMain/hud/oxygenBar').set_max(100+20*globals.upgradeLevels['ship'])
+	get_node(global.worldPath+'/hud/oxygenBar').set_max(100+20*globals.upgradeLevels['ship'])
 	$oxygenTimer.start()
 	if globals.oxygenLevel == 0:
 		adjustHealth(-10)
@@ -61,7 +61,7 @@ func adjustHealth(amount):
 		globals.inventory = {}
 		globals.playerInfo['health'] = 100
 		globals.oxygenLevel = 100+20*globals.upgradeLevels['ship']
-		get_node('/root/worldMain/Player').position = Vector2(768, 320)
+		get_node(global.worldPath+'/Player').position = Vector2(768, 320)
 
 
 func _on_healthTimer_timeout():

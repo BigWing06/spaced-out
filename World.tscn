@@ -1271,7 +1271,7 @@ shape = SubResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
-[node name="Node2D" parent="." instance=ExtResource( 37 )]
+[node name="Player2" parent="." instance=ExtResource( 37 )]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 371, 58 )

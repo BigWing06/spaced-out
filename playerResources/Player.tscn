@@ -50,7 +50,6 @@ shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, 23 )
-current = true
 
 [node name="drill" type="AnimatedSprite" parent="."]
 position = Vector2( 21, 16 )

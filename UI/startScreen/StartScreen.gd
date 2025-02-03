@@ -3,7 +3,7 @@ onready var globals = get_node("/root/global")
 
 func _on_newButton_pressed():
 	globals.newGame()
-	get_tree().change_scene("res://World.tscn")
+	get_tree().change_scene("res://Main.tscn")
 	globals.gamePaused = false
 
 func _on_loadButton_pressed():

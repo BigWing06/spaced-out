@@ -13,7 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var depth = globals.getTileMapPos(get_tree().get_current_scene().get_node('Player').position).y - 8
+	var depth = globals.getTileMapPos(get_node(global.worldPath+'/Player').position).y - 8
 	if depth < 0:
 		depth = 0
 	$Label.text = "Depth: " + str(depth)

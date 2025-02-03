@@ -19,7 +19,7 @@ var currentMenu = null
 var upgradeLevels = {'drill':0, 'ship':0}
 var playerAtShip = false
 var world = null
-
+var worldPath = "/root/Main/Viewports/ViewportContainer/ViewportPlayer1/worldMain"
 
 func newGame():
 	currentMenu = null
@@ -44,7 +44,7 @@ func _notification(what):
 func save(): #Handles the saving of the game
 	var file = File.new()
 	file.open(saveFilePath, File.WRITE)
-	file.store_string(to_json({'world':worldInfo, 'playerPos':get_tree().get_current_scene().get_node('Player').getSavePos(), 'inventory':inventory, 'upgrades':upgradeLevels, 'planet':currentPlanet, 'player':playerInfo}))
+	file.store_string(to_json({'world':worldInfo, 'playerPos':get_node(global.worldPath+'/Player').getSavePos(), 'inventory':inventory, 'upgrades':upgradeLevels, 'planet':currentPlanet, 'player':playerInfo}))
 	file.close()
 
 func isBetween(lowerBound, upperBound, num):
@@ -57,7 +57,7 @@ func isBetween(lowerBound, upperBound, num):
 		return false
 
 func getTileMapPos(coords): #Accepts coordinates as a vector and returns the coordinate of the tilemap
-	var tileMap = get_tree().get_current_scene().get_node('Player').get_parent().get_node('TileMap')
+	var tileMap = get_node(worldPath+'/Player').get_parent().get_node('TileMap')
 	var tempPos = Vector2(coords.x/tileMap.cell_size.x/tileMap.scale.x, coords.y/tileMap.cell_size.y/tileMap.scale.y)
 	if tempPos.x < 0:
 		tempPos.x-=1
