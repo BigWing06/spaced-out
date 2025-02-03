@@ -23,14 +23,17 @@ func _ready():
 	position = globals.playerStartPos[1]
 
 func _physics_process(delta):
+	var moveRight = Input.is_action_pressed("playerTwoMoveRight")
+	var moveLeft = Input.is_action_pressed("playerTwoMoveLeft")
+	var jump = Input.is_action_pressed("playerTwoJump")
 	velocity.y += gravity
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if jump and is_on_floor():
 		velocity.y = jumpAmount
-	if Input.is_action_pressed('moveRight'):
+	if moveRight:
 		velocity.x += movementSpeed/4
-	if Input.is_action_pressed('moveLeft'):
+	if moveLeft:
 		velocity.x -= movementSpeed/4
-	if not Input.is_action_pressed("moveRight") and not Input.is_action_pressed("moveLeft") and velocity.x != 0:
+	if not moveRight and not moveLeft and velocity.x != 0:
 		if velocity.x > 0:
 			velocity.x += movementSpeed/4*(velocity.x/abs(velocity.x)*-1)
 			velocity.x = clamp(velocity.x, 0, 100)
@@ -50,10 +53,5 @@ func _physics_process(delta):
 		scale.x = -1
 		
 	velocity = move_and_slide(velocity, Vector2.UP)
-	var tileMapPos = globals.getTileMapPos(position)
-	if tileMapPos != prePos:
-		tileMap.render(tileMapPos)
-	prePos = tileMapPos
-	var startPos = Vector2(tileMapPos.x-globals.renderDistance.x, tileMapPos.y-globals.renderDistance.y)
 func getSavePos():
 	return [position.x, position.y]
