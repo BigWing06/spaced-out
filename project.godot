@@ -131,6 +131,10 @@ planetMenu={
  ]
 }
 
+[mono]
+
+project/assembly_name="Spaced Out"
+
 [physics]
 
 common/enable_pause_aware_picking=true

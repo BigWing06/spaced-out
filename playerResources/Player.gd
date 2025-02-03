@@ -20,7 +20,7 @@ var stop = false
 var velocity = Vector2.ZERO
 
 func _ready():
-	position = globals.playerPosition
+	position = globals.playerStartPos[0]
 
 func _physics_process(delta):
 	velocity.y += gravity
@@ -53,7 +53,6 @@ func _physics_process(delta):
 	var tileMapPos = globals.getTileMapPos(position)
 	if tileMapPos != prePos:
 		tileMap.render(tileMapPos)
-	globals.playerPosition = position
 	prePos = tileMapPos
 	var startPos = Vector2(tileMapPos.x-globals.renderDistance.x, tileMapPos.y-globals.renderDistance.y)
 	if Input.is_action_pressed("mine") and mining == false:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://TileMap.gd" type="Script" id=1]
 [ext_resource path="res://resourceImages/Aluminum/AluminumTile.png" type="Texture" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://resourceImages/Coal/Coal45.PNG" type="Texture" id=34]
 [ext_resource path="res://resourceImages/Organic Material/Organic Material45.PNG" type="Texture" id=35]
 [ext_resource path="res://resourceImages/Titanium/Titanium45.PNG" type="Texture" id=36]
+[ext_resource path="res://playerResources/Player2.tscn" type="PackedScene" id=37]
 [ext_resource path="res://tiles/Planet4RockDark45.png" type="Texture" id=38]
 [ext_resource path="res://tiles/Planet2RockDark45.png" type="Texture" id=39]
 [ext_resource path="res://tiles/Planet1RockDark45.png" type="Texture" id=40]
@@ -689,6 +690,8 @@ position = Vector2( 0, -144 )
 shape = SubResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
+
+[node name="Node2D" parent="." instance=ExtResource( 37 )]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 371, 58 )
