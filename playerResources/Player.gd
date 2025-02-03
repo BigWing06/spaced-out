@@ -134,7 +134,6 @@ func updateMineState():
 		timerActive = false
 		mining = false
 		mineCellState = -1
-		print("tes")
 		for cell in mineCells:
 			mineTilemap.set_cellv(cell, mineCellState)
 			var resourceValue = 1 ### This is temporatry needs to be set once ore generation is fixed
