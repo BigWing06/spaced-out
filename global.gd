@@ -8,6 +8,7 @@ const playerStartPos = [Vector2(768, 320), Vector2(900, 320)]
 var oreGenerationMap = [[Vector2(1,-1), Vector2(0, 0), Vector2(1, 0), Vector2(-1, 1)], [Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 1)], [Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(-1, 1), Vector2(1, 1)], [Vector2(-1, -1), Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 1)], [Vector2(-1, -1), Vector2(1, -1), Vector2(0, 0), Vector2(0, 1), Vector2(1, 1)], [Vector2(1, -1), Vector2(0, 0), Vector2(-1, 1), Vector2(0, 1)], [Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 1)], [Vector2(-1, -1), Vector2(1, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(0, 1)], [Vector2(-1, -1), Vector2(0, 0), Vector2(1, 0), Vector2(-1, 1), Vector2(0, 1)]]
 var currentPlanet = '0'
 var playerInfo = {'movementSpeed':800, 'health':100}
+var player2Info = {'movementSpeed':800, 'health':100}
 var renderDistance = Vector2(8,5)
 var worldInfo = {'0':{'world':{'gravity':30, 'tileMapList':{}, 'map':null, 'tileMapKey':{'rock':7, 'rock45':8, 'border':6, 'mined':0}}}, '1':{'world':{'gravity':30, 'tileMapList':{}, 'map':null, 'tileMapKey':{'rock':9, 'rock45':10, 'border':6, 'mined':1}}}, '2':{'world':{'gravity':30, 'tileMapList':{}, 'map':null, 'tileMapKey':{'rock':11, 'rock45':12, 'border':6, 'mined':2}}}, '3':{'world':{'gravity':30, 'tileMapList':{}, 'map':null, 'tileMapKey':{'rock':13, 'rock45':14, 'border':6, 'mined':3}}}, '4':{'world':{'gravity':30, 'tileMapList':{}, 'map':null, 'tileMapKey':{'rock':1, 'rock45':3, 'border':6}}}}
 var mineRadius = 1
@@ -15,13 +16,15 @@ var saveFilePath = 'user://saveData.txt'
 var gamePaused = true
 var inventory = {1:0, 3:0, 2:0, 6:0, 7:0, 4:0, 8:0, 5:0}
 var oxygenLevel = 100
+var oxygen2Level = 100
 var currentMenu = null
 var upgradeLevels = {'drill':0, 'ship':0}
 var playerAtShip = false
+var player2AtShip = false
 var world = null
 var worldPath = "/root/Main/Viewports/ViewportContainer/ViewportPlayer1/worldMain"
 var main = null
-
+var hideHud = false
 func newGame():
 	currentMenu = null
 	currentPlanet = '0'

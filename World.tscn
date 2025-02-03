@@ -1297,6 +1297,7 @@ wait_time = 10.0
 wait_time = 2.5
 
 [node name="hud" parent="." instance=ExtResource( 14 )]
+visible = false
 
 [node name="inventory" parent="." instance=ExtResource( 8 )]
 visible = false
@@ -1314,6 +1315,12 @@ visible = false
 [node name="healthTimer" type="Timer" parent="."]
 wait_time = 10.0
 
+[node name="oxygen2Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="health2Timer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="tree_entered" from="." to="." method="_on_worldMain_tree_entered"]
 [connection signal="body_entered" from="spaceShip/spaceShipCollision" to="." method="_on_spaceShipCollision_body_entered"]
 [connection signal="body_exited" from="spaceShip/spaceShipCollision" to="." method="_on_spaceShipCollision_body_exited"]
@@ -1322,3 +1329,5 @@ wait_time = 10.0
 [connection signal="timeout" from="saveTimer" to="." method="_on_saveTimer_timeout"]
 [connection signal="timeout" from="oxygenTimer" to="." method="_on_oxygenTimer_timeout"]
 [connection signal="timeout" from="healthTimer" to="." method="_on_healthTimer_timeout"]
+[connection signal="timeout" from="oxygen2Timer" to="." method="_on_oxygen2Timer_timeout"]
+[connection signal="timeout" from="health2Timer" to="." method="_on_health2Timer_timeout"]

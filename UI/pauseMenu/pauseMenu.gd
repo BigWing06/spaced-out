@@ -8,6 +8,7 @@ func _on_Button2_pressed():
 	globals.save()
 	get_tree().change_scene("res://UI/startScreen/StartScreen.tscn")
 	get_node(global.worldPath+'/Player').get_parent().queue_free()
+	get_node(global.worldPath+'/Player2').get_parent().queue_free()
 	globals.gamePaused = true
 
 func toggleEscape():

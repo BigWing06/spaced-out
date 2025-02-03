@@ -12,5 +12,7 @@ func _ready():
 	camera2.target= get_node(global.worldPath+"/Player2")
 func splitScreenOn():
 	$Viewports/ViewportContainer2.size_flags_horizontal=3
+	global.hideHud=false
 func splitScreenOff():
 	$Viewports/ViewportContainer2.size_flags_horizontal=0
+	global.hideHud=true
