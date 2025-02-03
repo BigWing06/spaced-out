@@ -5,10 +5,28 @@
 [ext_resource path="res://playerResources/PlayerSegments/AstroLowerArm.png" type="Texture" id=8]
 [ext_resource path="res://playerResources/PlayerSegments/AstroHead.png" type="Texture" id=9]
 [ext_resource path="res://playerResources/PlayerSegments/AstroTorso.png" type="Texture" id=10]
-[ext_resource path="res://playerResources/handattach.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24, 48 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Position2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+#Figure out how to make hands stay attached to drill handles and rotate with it
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
 
 [node name="Node2D" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -90,7 +108,7 @@ __meta__ = {
 position = Vector2( -22, 52 )
 rotation = -3.60258
 scale = Vector2( 2, 2 )
-script = ExtResource( 12 )
+script = SubResource( 4 )
 __meta__ = {
 "_edit_bone_": true
 }
