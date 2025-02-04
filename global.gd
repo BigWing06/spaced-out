@@ -37,6 +37,8 @@ var main = null
 var hideHud = false
 var inventory = preload('res://playerResources/inventoryManager.gd').new()
 
+var inventory = preload('res://playerResources/inventoryManager.gd').new()
+
 func newGame():
 	currentMenu = null
 	inventory.setup()
