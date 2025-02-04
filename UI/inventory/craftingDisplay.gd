@@ -44,17 +44,12 @@ func updateInfo(texture, resourcesNeeded, title, info):
 		var display = requiredResourceDisplay.instance()
 		$resourceContainer.add_child(display)
 		display.display(requiredResources[i])
-		if requiredResources[i][0] in globals.inventory.keys():
-			if not globals.inventory[requiredResources[i][0]] >= requiredResources[i][1]:
-				hasResources = false
-		else:
+		if not global.inventory.hasAmount(requiredResources[i][1], requiredResources[i][0]):
 			hasResources = false
-		if not hasResources:
-			$craftButton.disabled = true
-		else:
-			$craftButton.disabled = false
-	
-
+	if not hasResources:
+		$craftButton.disabled = true
+	else:
+		$craftButton.disabled = false
 func checkResource():
 	if upgradeInfo != null:
 		if upgradeInfo[0] == 'upgrade':

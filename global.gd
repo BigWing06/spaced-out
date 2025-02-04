@@ -4,12 +4,15 @@ extends Node
 const resourceInfo = {
 	"stone":{'name':'Stone'}, 
 	"coal":{'name':'Coal'}, 
-	'carbon':{'name':'Carbon', 'craftResources':[[5, 1]]}, 
-	"rocket_fuel":{'name':'Rocket Fuel', 'craftResources':[[3, 1], [2, 1]]}, 
+	'carbon':{'name':'Carbon', 'craftResources':[["organic_material", 1]]}, 
+	"rocket_fuel":{'name':'Rocket Fuel', 'craftResources':[["carbon", 1], ["coal", 1]]}, 
 	'organic_material':{'name':'Organic Material', 'tilemap':[1, 9]}, 
-	'aluminum':{'name':'Aluminum', 'tilemap':[2, 6]}, 'copper':{'name':'Copper', 'tilemap':[3, 8]}, 
+	'aluminum':{'name':'Aluminum', 'tilemap':[2, 6]}, 
+	'copper':{'name':'Copper', 'tilemap':[3, 8]}, 
 	'titanium':{'name':'Titanium', 'tilemap':[4, 10]}}
-const upgradeInfos = {'ship':[[0], [1, [[6, 50]]], [2, [[6, 100], [7, 10]]], [3, [[6, 150], [7, 25]]], [4, [[6, 200], [7, 50]]]], 'drill':[[.24], [.2, [[8, 25]]], [.16, [[8, 50], [7, 5]]], [.12, [[8, 75], [7, 10]]]]}
+const upgradeInfos = {
+	'ship':[[0], [1, [['aluminum', 50]]], [2, [['aluminum', 100], ['copper', 10]]], [3, [['aluminum', 150], ['copper', 25]]], [4, [['aluminum', 200], ['copper', 50]]]], 
+	'drill':[[.24], [.2, [["titanium", 25]]], [.16, [["titanium", 50], ["copper", 5]]], [.12, [["titanium", 75], ["copper", 10]]]]}
 const planetInfo = [{'name':'Planet 1', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}, {'name':'Planet 2', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}, {'name':'Planet 3', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}, {'name':'Planet 4', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}]
 const oreGenerationKey = {'0':[2, 5, 6], '1':[8, 5, 2], '2':[7, 2, 5], '3':[2, 2, 2]}
 const playerStartPos = [Vector2(768, 320), Vector2(900, 320)]

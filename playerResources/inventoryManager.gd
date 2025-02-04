@@ -20,13 +20,27 @@ func checkResource(resource):
 		push_error(str(resource) + " is not a valid resource string")
 		return false
 
-func add(resource, amount):
+func add(resource, amount): #Adds an amount of a specific resrouce to inventory
 	if checkResource(resource):
 		inventory[resource] += amount
 
-func getAmount(resource):
+func getAmount(resource): #Gets amount of a specific resource in inventory
 	if checkResource(resource):
 		return inventory[resource]
+		
+func hasAmount(amount, resource): #Checks to see if a specified amount of a resource is in the inventory
+	if checkResource(resource):
+		if amount <= getAmount(resource):
+			return true
+	return false
+		
+func getResourceDict(): #Returns a dictionary containg resouces and amounts that are in inventory
+	var output = {}
+	for resource in inventory.keys():
+		if inventory[resource] > 0:
+			output[resource] = inventory[resource]
+	return output
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

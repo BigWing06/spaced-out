@@ -48,14 +48,9 @@ func toggleEscape():
 		visible = false
 
 func inventoryUpdate():
-	for key in globals.inventory.keys():
-		if globals.inventory[key] == 0:
-			globals.inventory.erase(key)
-	for i in itemSceneList:
-		i.showResource(null)
-	for i in range(len(globals.inventory.keys())):
-		var resourceNum = globals.inventory.keys()[i]
-		itemSceneList[i].showResource(resourceNum)
+	var resources = global.inventory.getResourceDict()
+	for resource in len(resources.keys()):
+		itemSceneList[resource].showResource(resources.keys()[resource])
 
 func _on_TextureButton4_pressed():
 	toggleEscape()
