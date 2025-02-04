@@ -17,9 +17,9 @@ func _process(delta):
 		self.hide()
 	else:
 		self.show()
-	var depth = globals.getTileMapPos(get_node(global.worldPath+'/Player').position).y - 8
+	var depth = globals.getTileMapPos(get_node(global.worldPath+'/Player2').position).y - 8
 	if depth < 0:
 		depth = 0
 	$Label.text = "Depth: " + str(depth)
-	$oxygenBar.value = globals.oxygenLevel
-	$healthBar.value = globals.playerInfo['health']
+	$oxygenBar.value = globals.oxygen2Level
+	$healthBar.value = globals.player2Info['health']

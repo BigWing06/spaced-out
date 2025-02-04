@@ -19,18 +19,25 @@ const playerStartPos = [Vector2(768, 320), Vector2(900, 320)]
 var oreGenerationMap = [[Vector2(1,-1), Vector2(0, 0), Vector2(1, 0), Vector2(-1, 1)], [Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 1)], [Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(-1, 1), Vector2(1, 1)], [Vector2(-1, -1), Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 1)], [Vector2(-1, -1), Vector2(1, -1), Vector2(0, 0), Vector2(0, 1), Vector2(1, 1)], [Vector2(1, -1), Vector2(0, 0), Vector2(-1, 1), Vector2(0, 1)], [Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 1)], [Vector2(-1, -1), Vector2(1, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(0, 1)], [Vector2(-1, -1), Vector2(0, 0), Vector2(1, 0), Vector2(-1, 1), Vector2(0, 1)]]
 var currentPlanet = '0'
 var playerInfo = {'movementSpeed':800, 'health':100}
+var player2Info = {'movementSpeed':800, 'health':100}
 var renderDistance = Vector2(8,5)
 var worldInfo = {'0':{'world':{'gravity':30, 'tileMapList':{}, 'map':null, 'tileMapKey':{'rock':7, 'rock45':8, 'border':6, 'mined':0}}}, '1':{'world':{'gravity':30, 'tileMapList':{}, 'map':null, 'tileMapKey':{'rock':9, 'rock45':10, 'border':6, 'mined':1}}}, '2':{'world':{'gravity':30, 'tileMapList':{}, 'map':null, 'tileMapKey':{'rock':11, 'rock45':12, 'border':6, 'mined':2}}}, '3':{'world':{'gravity':30, 'tileMapList':{}, 'map':null, 'tileMapKey':{'rock':13, 'rock45':14, 'border':6, 'mined':3}}}, '4':{'world':{'gravity':30, 'tileMapList':{}, 'map':null, 'tileMapKey':{'rock':1, 'rock45':3, 'border':6}}}}
 var mineRadius = 1
 var saveFilePath = 'user://saveData.txt'
 var gamePaused = true
 var oxygenLevel = 100
+var oxygen2Level = 100
 var currentMenu = null
 var upgradeLevels = {'drill':0, 'ship':0}
 var playerAtShip = false
+var player2AtShip = false
 var world = null
+var worldPath = "/root/Main/Viewports/ViewportContainer/ViewportPlayer1/worldMain"
+var main = null
+var hideHud = false
 var inventory = preload('res://playerResources/inventoryManager.gd').new()
 
+var inventory = preload('res://playerResources/inventoryManager.gd').new()
 
 func newGame():
 	currentMenu = null
@@ -55,7 +62,7 @@ func _notification(what):
 func save(): #Handles the saving of the game
 	var file = File.new()
 	file.open(saveFilePath, File.WRITE)
-	file.store_string(to_json({'world':worldInfo, 'playerPos':get_tree().get_current_scene().get_node('Player').getSavePos(), 'inventory':inventory, 'upgrades':upgradeLevels, 'planet':currentPlanet, 'player':playerInfo}))
+	file.store_string(to_json({'world':worldInfo, 'playerPos':get_node(global.worldPath+'/Player').getSavePos(), 'inventory':inventory, 'upgrades':upgradeLevels, 'planet':currentPlanet, 'player':playerInfo}))
 	file.close()
 
 func isBetween(lowerBound, upperBound, num):
@@ -68,7 +75,7 @@ func isBetween(lowerBound, upperBound, num):
 		return false
 
 func getTileMapPos(coords): #Accepts coordinates as a vector and returns the coordinate of the tilemap
-	var tileMap = get_tree().get_current_scene().get_node('Player').get_parent().get_node('TileMap')
+	var tileMap = get_node(worldPath+'/Player').get_parent().get_node('TileMap')
 	var tempPos = Vector2(coords.x/tileMap.cell_size.x/tileMap.scale.x, coords.y/tileMap.cell_size.y/tileMap.scale.y)
 	if tempPos.x < 0:
 		tempPos.x-=1

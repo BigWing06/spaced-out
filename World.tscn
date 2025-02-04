@@ -1236,6 +1236,7 @@ extents = Vector2( 144, 136 )
 script = ExtResource( 6 )
 
 [node name="background" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, 1000 )
 z_index = -100
 
@@ -1258,7 +1259,7 @@ tile_set = SubResource( 10 )
 format = 1
 
 [node name="spaceShip" type="Sprite" parent="."]
-position = Vector2( 232, -72 )
+position = Vector2( 232, 552 )
 z_index = -10
 texture = ExtResource( 23 )
 offset = Vector2( 0, -140.5 )
@@ -1266,12 +1267,12 @@ offset = Vector2( 0, -140.5 )
 [node name="spaceShipCollision" type="Area2D" parent="spaceShip"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spaceShip/spaceShipCollision"]
-position = Vector2( 0, -144 )
+position = Vector2( -2, -136 )
 shape = SubResource( 11 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
-[node name="Node2D" parent="." instance=ExtResource( 37 )]
+[node name="Player2" parent="." instance=ExtResource( 37 )]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 371, 58 )
@@ -1296,6 +1297,7 @@ wait_time = 10.0
 wait_time = 2.5
 
 [node name="hud" parent="." instance=ExtResource( 14 )]
+visible = false
 
 [node name="inventory" parent="." instance=ExtResource( 8 )]
 visible = false
@@ -1313,6 +1315,12 @@ visible = false
 [node name="healthTimer" type="Timer" parent="."]
 wait_time = 10.0
 
+[node name="oxygen2Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="health2Timer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="tree_entered" from="." to="." method="_on_worldMain_tree_entered"]
 [connection signal="body_entered" from="spaceShip/spaceShipCollision" to="." method="_on_spaceShipCollision_body_entered"]
 [connection signal="body_exited" from="spaceShip/spaceShipCollision" to="." method="_on_spaceShipCollision_body_exited"]
@@ -1321,3 +1329,5 @@ wait_time = 10.0
 [connection signal="timeout" from="saveTimer" to="." method="_on_saveTimer_timeout"]
 [connection signal="timeout" from="oxygenTimer" to="." method="_on_oxygenTimer_timeout"]
 [connection signal="timeout" from="healthTimer" to="." method="_on_healthTimer_timeout"]
+[connection signal="timeout" from="oxygen2Timer" to="." method="_on_oxygen2Timer_timeout"]
+[connection signal="timeout" from="health2Timer" to="." method="_on_health2Timer_timeout"]
