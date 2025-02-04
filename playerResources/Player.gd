@@ -134,17 +134,12 @@ func updateMineState():
 		timerActive = false
 		mining = false
 		mineCellState = -1
-		print("tes")
 		for cell in mineCells:
 			mineTilemap.set_cellv(cell, mineCellState)
-			var resourceValue = 1 ### This is temporatry needs to be set once ore generation is fixed
-			if resourceValue != 0:
-				if not resourceValue in globals.inventory.keys():
-					globals.inventory[int(resourceValue)] = 1
-				else:
-					globals.inventory[int(resourceValue)] += 1
+			var resourceValue = 'stone' ### This is temporatry needs to be set once ore generation is fixed
+			globals.inventory.add(resourceValue, 1)
 			globals.world.get_node("TileMap").mineCell(cell)
-			if resourceValue != 1:
+			if resourceValue != "stone":
 				get_parent().get_node("resourceTileMap").set_cellv(cell, -1)
 		for cell in mineCells:
 			globals.world.get_node("TileMap").update_bitmask_area(cell)

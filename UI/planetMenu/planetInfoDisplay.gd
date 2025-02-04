@@ -12,14 +12,13 @@ func displayPlanet(num):
 	$fuelDisplay.visible = true
 	$fuelAmount.text = str(abs(int(globals.currentPlanet)-planetNum)*10)
 	$iconDisplay.texture = load('res://UI/planetMenu/Planet' + str(int(num+1)) + '.png')
-	isValid()
 	
 func isValid():
 	var valid = true
 	if planetNum != null:
 		if not planetNum <= globals.upgradeLevels['ship']:
 			valid = false
-		if not globals.inventory[4] >= abs(int(globals.currentPlanet)-planetNum)*10:
+		if not globals.inventory.getAmount("rocket_fuel") >= abs(int(globals.currentPlanet)-planetNum)*10:
 			valid = false
 		if int(globals.currentPlanet) == planetNum:
 			valid = false
