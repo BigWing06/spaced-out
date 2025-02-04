@@ -1,7 +1,18 @@
 extends Node
 
-const resourceInfo = {1:{'name':'Stone'}, 2:{'name':'Coal', 'tilemap':[0, 7]}, 3:{'name':'Carbon', 'craftResources':[[5, 1]]}, 4:{'name':'Rocket Fuel', 'craftResources':[[3, 1], [2, 1]]}, 5:{'name':'Organic Material', 'tilemap':[1, 9]}, 6:{'name':'Aluminum', 'tilemap':[2, 6]}, 7:{'name':'Copper', 'tilemap':[3, 8]}, 8:{'name':'Titanium', 'tilemap':[4, 10]}, 9:{'name':'rohbheighdanqueium', 'tilemap':[5]}}
-const upgradeInfos = {'ship':[[0], [1, [[6, 50]]], [2, [[6, 100], [7, 10]]], [3, [[6, 150], [7, 25]]], [4, [[6, 200], [7, 50]]]], 'drill':[[.24], [.2, [[8, 25]]], [.16, [[8, 50], [7, 5]]], [.12, [[8, 75], [7, 10]]]]}
+#const resourceInfo = {1:{'name':'Stone'}, 2:{'name':'Coal', 'tilemap':[0, 7]}, 3:{'name':'Carbon', 'craftResources':[[5, 1]]}, 4:{'name':'Rocket Fuel', 'craftResources':[[3, 1], [2, 1]]}, 5:{'name':'Organic Material', 'tilemap':[1, 9]}, 6:{'name':'Aluminum', 'tilemap':[2, 6]}, 7:{'name':'Copper', 'tilemap':[3, 8]}, 8:{'name':'Titanium', 'tilemap':[4, 10]}, 9:{'name':'rohbheighdanqueium', 'tilemap':[5]}}
+const resourceInfo = {
+	"stone":{'name':'Stone'}, 
+	"coal":{'name':'Coal'}, 
+	'carbon':{'name':'Carbon', 'craftResources':[["organic_material", 1]]}, 
+	"rocket_fuel":{'name':'Rocket Fuel', 'craftResources':[["carbon", 1], ["coal", 1]]}, 
+	'organic_material':{'name':'Organic Material', 'tilemap':[1, 9]}, 
+	'aluminum':{'name':'Aluminum', 'tilemap':[2, 6]}, 
+	'copper':{'name':'Copper', 'tilemap':[3, 8]}, 
+	'titanium':{'name':'Titanium', 'tilemap':[4, 10]}}
+const upgradeInfos = {
+	'ship':[[0], [1, [['aluminum', 50]]], [2, [['aluminum', 100], ['copper', 10]]], [3, [['aluminum', 150], ['copper', 25]]], [4, [['aluminum', 200], ['copper', 50]]]], 
+	'drill':[[.24], [.2, [["titanium", 25]]], [.16, [["titanium", 50], ["copper", 5]]], [.12, [["titanium", 75], ["copper", 10]]]]}
 const planetInfo = [{'name':'Planet 1', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}, {'name':'Planet 2', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}, {'name':'Planet 3', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}, {'name':'Planet 4', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}]
 const oreGenerationKey = {'0':[2, 5, 6], '1':[8, 5, 2], '2':[7, 2, 5], '3':[2, 2, 2]}
 const playerStartPos = [Vector2(768, 320), Vector2(900, 320)]
@@ -14,7 +25,6 @@ var worldInfo = {'0':{'world':{'gravity':30, 'tileMapList':{}, 'map':null, 'tile
 var mineRadius = 1
 var saveFilePath = 'user://saveData.txt'
 var gamePaused = true
-var inventory = {1:0, 3:0, 2:0, 6:0, 7:0, 4:0, 8:0, 5:0}
 var oxygenLevel = 100
 var oxygen2Level = 100
 var currentMenu = null
@@ -25,8 +35,11 @@ var world = null
 var worldPath = "/root/Main/Viewports/ViewportContainer/ViewportPlayer1/worldMain"
 var main = null
 var hideHud = false
+var inventory = preload('res://playerResources/inventoryManager.gd').new()
+
 func newGame():
 	currentMenu = null
+	inventory.setup()
 	currentPlanet = '0'
 	playerInfo = {'movementSpeed':400, 'health':100}
 	renderDistance = Vector2(8, 5)
@@ -34,7 +47,6 @@ func newGame():
 	mineRadius = 1
 	saveFilePath = 'user://saveData.txt'
 	gamePaused = true
-	inventory = {1:0, 3:0, 2:0, 6:0, 7:0, 4:0, 8:0, 5:0}
 	oxygenLevel = 100
 	upgradeLevels = {'drill':0, 'ship':0}
 	playerAtShip = false
