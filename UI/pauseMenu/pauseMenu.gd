@@ -7,13 +7,16 @@ func _on_Button_pressed():
 func _on_Button2_pressed():
 	globals.save()
 	get_tree().change_scene("res://UI/startScreen/StartScreen.tscn")
-	get_tree().get_current_scene().get_node('Player').get_parent().queue_free()
+	get_node(global.worldPath+'/Player').get_parent().queue_free()
+	get_node(global.worldPath+'/Player2').get_parent().queue_free()
 	globals.gamePaused = true
 
 func toggleEscape():
 	if visible == false:
 		get_parent().setPauseState(true)
 		visible = true
+		global.main.splitScreenOff()
 	else:
 		get_parent().setPauseState(false)
 		visible = false
+		global.main.splitScreenOn()

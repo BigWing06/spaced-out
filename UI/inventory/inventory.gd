@@ -41,21 +41,18 @@ func toggleEscape():
 		get_parent().setPauseState(true)
 		visible = true
 		inventoryUpdate()
-		get_node('/root/worldMain/inventory/craftMenu/upgradeViewer').checkResource()
+		get_node(global.worldPath+'/inventory/craftMenu/upgradeViewer').checkResource()
+		global.main.splitScreenOff()
 	else:
-		globals.currentMenu = get_node('/root/worldMain/pauseMenu')
+		globals.currentMenu = get_node(global.worldPath+'/pauseMenu')
 		get_parent().setPauseState(false)
 		visible = false
+		global.main.splitScreenOn()
 
 func inventoryUpdate():
-	for key in globals.inventory.keys():
-		if globals.inventory[key] == 0:
-			globals.inventory.erase(key)
-	for i in itemSceneList:
-		i.showResource(null)
-	for i in range(len(globals.inventory.keys())):
-		var resourceNum = globals.inventory.keys()[i]
-		itemSceneList[i].showResource(resourceNum)
+	var resources = global.inventory.getResourceDict()
+	for resource in len(resources.keys()):
+		itemSceneList[resource].showResource(resources.keys()[resource])
 
 func _on_TextureButton4_pressed():
 	toggleEscape()
@@ -72,8 +69,8 @@ func _on_TextureButton2_pressed(): #Runs whem the button to show crafting is cli
 
 
 func _on_drillUpgrade_pressed():
-	get_node('/root/worldMain/inventory/craftMenu/upgradeViewer').displayUpgrade('drill', load('res://playerResources/drill/drillr.png'), 'Upgrade Drill')
+	get_node(global.worldPath+'/inventory/craftMenu/upgradeViewer').displayUpgrade('drill', load('res://playerResources/drill/drillr.png'), 'Upgrade Drill')
 
 
 func _on_shipUpgrade_pressed():
-	get_node('/root/worldMain/inventory/craftMenu/upgradeViewer').displayUpgrade('ship', load('res://Spaceship.png'), 'Upgrade Ship')
+	get_node(global.worldPath+'/inventory/craftMenu/upgradeViewer').displayUpgrade('ship', load('res://Spaceship.png'), 'Upgrade Ship')
