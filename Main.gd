@@ -3,7 +3,6 @@ onready var viewport1 = $Viewports/ViewportContainer/ViewportPlayer1
 onready var viewport2 = $Viewports/ViewportContainer2/ViewportPlayer2
 onready var camera1 = $Viewports/ViewportContainer/ViewportPlayer1/Camera2D
 onready var camera2 = $Viewports/ViewportContainer2/ViewportPlayer2/Camera2D
-onready var world = $Viewports/ViewportContainer/ViewportPlayer1/world
 onready var viewContainer2 = $Viewports/ViewportContainer2
 func _ready():
 	global.main=self

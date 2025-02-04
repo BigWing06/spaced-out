@@ -7,7 +7,7 @@ export(int) var period = 3
 export(float) var persistence = .3
 export(float) var lacunarity = .4
 export(float) var noiseThreshold = .5
-export(int) var groundLevelOffset = 8
+export(int) var groundLevelOffset = 0
 var noise = OpenSimplexNoise.new()
 var world = {}
 
@@ -38,6 +38,11 @@ func generateWorld(pos):
 	
 func mineCell(pos):
 	set_cell(pos.x, pos.y, -1)
+	
+func setCell(pos, resource):
+	set_cell(pos.x, pos.y, 25)
+	print("test")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

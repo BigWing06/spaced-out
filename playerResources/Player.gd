@@ -111,13 +111,16 @@ func _physics_process(delta):
 		if get_viewport_rect().has_point(rawPos):
 			var playerPosition = globals.getTileMapPos(position)
 			var cameraPos = $Camera2D.get_camera_position()
-			placeTileMapPos = globals.getTileMapPos(Vector2(rawPos.x+cameraPos.x-532, rawPos.y+cameraPos.y-300))
+			#placeTileMapPos = globals.getTileMapPos(Vector2(rawPos.x+position.x, rawPos.y+position.y))
+			placeTileMapPos = global.world.get_node("TileMap").world_to_map(get_viewport().get_mouse_position()+position-(get_viewport().size)/2)
+			print(placeTileMapPos)
 			if abs(placeTileMapPos.x-playerPosition.x)>1 or abs(placeTileMapPos.y-playerPosition.y)>1:
 				if globals.world.get_node("TileMap").get_cellv(placeTileMapPos) == -1:
-					if globals.inventory[1] > 0:
-						globals.inventory[1] = globals.inventory[1] - 1
-						globals.world.get_node("TileMap").set_cellv(placeTileMapPos, 25)
+					if global.inventory.hasAmount(1, "stone"):
+						globals.inventory.add("stone", -1)
+						globals.world.get_node("TileMap").setCell(placeTileMapPos, 25)
 						globals.world.get_node("TileMap").update_bitmask_area(placeTileMapPos)
+						
 func getSavePos():
 	return [position.x, position.y]
 	
@@ -137,7 +140,7 @@ func updateMineState():
 		for cell in mineCells:
 			mineTilemap.set_cellv(cell, mineCellState)
 			var resourceValue = 'stone' ### This is temporatry needs to be set once ore generation is fixed
-			globals.inventory.add(resourceValue, 1)
+			global.inventory.add(resourceValue, 1)
 			globals.world.get_node("TileMap").mineCell(cell)
 			if resourceValue != "stone":
 				get_parent().get_node("resourceTileMap").set_cellv(cell, -1)

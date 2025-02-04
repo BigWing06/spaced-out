@@ -1246,6 +1246,7 @@ tile_set = SubResource( 20 )
 format = 1
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 8, 7 )
 tile_set = SubResource( 1 )
 format = 1
 script = ExtResource( 1 )
@@ -1259,7 +1260,6 @@ tile_set = SubResource( 10 )
 format = 1
 
 [node name="spaceShip" type="Sprite" parent="."]
-position = Vector2( 232, 552 )
 z_index = -10
 texture = ExtResource( 23 )
 offset = Vector2( 0, -140.5 )
