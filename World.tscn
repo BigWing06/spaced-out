@@ -1296,10 +1296,10 @@ wait_time = 10.0
 [node name="oxygenTimer" type="Timer" parent="."]
 wait_time = 2.5
 
-[node name="hud" parent="." instance=ExtResource( 14 )]
+[node name="inventory" parent="." instance=ExtResource( 8 )]
 visible = false
 
-[node name="inventory" parent="." instance=ExtResource( 8 )]
+[node name="hud" parent="." instance=ExtResource( 14 )]
 visible = false
 
 [node name="pauseMenu" parent="." instance=ExtResource( 7 )]

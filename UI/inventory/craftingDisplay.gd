@@ -63,9 +63,8 @@ func checkResource():
 func checkResourceSub():
 	hasResources = true
 	for i in range(len(requiredResources)):
-		if requiredResources[i][0] in globals.inventory.keys():
-			if not globals.inventory[requiredResources[i][0]] >= requiredResources[i][1]:
-				hasResources = false
+		if global.inventory.hasAmount(requiredResources[i][0], requiredResources[i][1]):
+			hasResources = false
 		else:
 			hasResources = false
 		if not hasResources:
@@ -76,7 +75,7 @@ func checkResourceSub():
 
 func _on_craftButton_pressed():
 	for r in requiredResources:
-		globals.inventory[r[0]] -= r[1]
+		globals.inventory.add(r[0], -r[1])
 	if upgradeInfo[0] == 'item':
 		if not upgradeInfo[1] in globals.inventory.keys():
 			globals.inventory[upgradeInfo[1]] = 0
@@ -85,4 +84,4 @@ func _on_craftButton_pressed():
 	else:
 		globals.upgradeLevels[upgradeInfo[1]] += 1
 		displayUpgrade(upgradeInfo[1], $icon.texture, $name.text)
-	get_node('/root/worldMain/inventory').inventoryUpdate()
+	get_parent().get_parent().inventoryUpdate()

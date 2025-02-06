@@ -45,7 +45,6 @@ script = ExtResource( 3 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Viewports/ViewportContainer/ViewportPlayer1"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Viewports/ViewportContainer/ViewportPlayer1/ParallaxBackground"]
-position = Vector2( 0, 50 )
 z_index = -20
 motion_mirroring = Vector2( 5040, 10079 )
 
