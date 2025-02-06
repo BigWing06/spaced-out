@@ -1,16 +1,17 @@
 extends TileMap
 export(Vector2) var mapSize  = Vector2(3, 2)	
-export(String) var mapSeed = "Blah Blah Blah"
-export(Vector2) var chunkSize = Vector2(100, 100)
+export(String) var mapSeed = "two"
+export(Vector2) var chunkSize = Vector2(10, 10)
 export(int) var octaves = 3
 export(int) var period = 3
-export(float) var persistence = .3
+export(float) var persistence = 4
 export(float) var lacunarity = .4
-export(float) var noiseThreshold = .5
+export(float) var noiseThreshold = .3
 export(int) var groundLevelOffset = 0
 var noise = OpenSimplexNoise.new()
 var world = {}
 var loadedChunks = [] #list to keep track of chunks that are loaded
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -25,6 +26,7 @@ func onPlayerChunkChange(playerChunk):
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("tile")
 	noise.seed = mapSeed.hash()
 	noise.octaves = octaves
 	noise.period = period
@@ -52,12 +54,16 @@ func generateWorld(pos):
 	var chunkOffset = pos*chunkSize
 	for x in range(chunkOffset.x, chunkOffset.x + chunkSize.x):
 		for y in range(chunkOffset.y, chunkOffset.y + chunkSize.y):
-			if y >= determineGroundLevel(x):
-				if (noise.get_noise_2d(x, y) < noiseThreshold):
-					set_cell(x, y, 25, false, false, false, get_cell_autotile_coord(x, y))
-					
+			if y >= determineGroundLevel(x): #Checks to make sure that it is under grounnd level
+				if (y > 10):
+					if (noise.get_noise_2d(x, y) < abs(noiseThreshold)/1.5):
+						set_cell(x, y, 25, false, false, false, get_cell_autotile_coord(x, y))
 				else:
-					set_cell(x, y, 9, false, false, false, get_cell_autotile_coord(x, y))
+					if (noise.get_noise_2d(x, y) < abs(noiseThreshold)):
+						set_cell(x, y, 25, false, false, false, get_cell_autotile_coord(x, y))
+					
+				#else:
+				#	set_cell(x, y, 9, false, false, false, get_cell_autotile_coord(x, y))
 				update_bitmask_area(Vector2(x, y))
 	update_dirty_quadrants()
 	
