@@ -7,7 +7,6 @@ func toggleEscape():
 var inventory = false
 
 func _process(delta):
-	###$background.position.x = get_node(global.worldPath+'/Player').position.x
 	if Input.is_action_just_pressed("pause"):
 		globals.currentMenu.toggleEscape()
 	if Input.is_action_just_pressed("inventory"):

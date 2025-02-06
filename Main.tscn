@@ -17,13 +17,6 @@ margin_right = 1080.0
 margin_bottom = 1920.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="hudPlayer1" parent="." instance=ExtResource( 6 )]
-
-[node name="hudPlayer2" parent="." instance=ExtResource( 6 )]
-offset = Vector2( 540, 0 )
-transform = Transform2D( 1, 0, 0, 1, 540, 0 )
-script = ExtResource( 7 )
-
 [node name="Viewports" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -52,6 +45,7 @@ script = ExtResource( 3 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Viewports/ViewportContainer/ViewportPlayer1"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Viewports/ViewportContainer/ViewportPlayer1/ParallaxBackground"]
+position = Vector2( 0, 50 )
 z_index = -20
 motion_mirroring = Vector2( 5040, 10079 )
 
@@ -73,10 +67,15 @@ size = Vector2( 510, 602 )
 handle_input_locally = false
 render_target_update_mode = 3
 
+[node name="Camera2D" type="Camera2D" parent="Viewports/ViewportContainer2/ViewportPlayer2"]
+current = true
+script = ExtResource( 4 )
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Viewports/ViewportContainer2/ViewportPlayer2"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Viewports/ViewportContainer2/ViewportPlayer2/ParallaxBackground"]
 z_index = -20
+motion_offset = Vector2( 0, 50 )
 motion_mirroring = Vector2( 5040, 10079 )
 
 [node name="Sprite" type="Sprite" parent="Viewports/ViewportContainer2/ViewportPlayer2/ParallaxBackground/ParallaxLayer"]
@@ -84,9 +83,12 @@ position = Vector2( 0, 297 )
 texture = ExtResource( 9 )
 centered = false
 
-[node name="Camera2D" type="Camera2D" parent="Viewports/ViewportContainer2/ViewportPlayer2"]
-current = true
-script = ExtResource( 4 )
+[node name="hudPlayer1" parent="." instance=ExtResource( 6 )]
+
+[node name="hudPlayer2" parent="." instance=ExtResource( 6 )]
+offset = Vector2( 540, 0 )
+transform = Transform2D( 1, 0, 0, 1, 540, 0 )
+script = ExtResource( 7 )
 
 [node name="noise" type="TextureRect" parent="."]
 visible = false

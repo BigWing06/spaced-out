@@ -148,7 +148,7 @@ func updateMineState():
 		mineCellState = -1
 		for cell in mineCells:
 			mineTilemap.set_cellv(cell, mineCellState)
-			var resourceValue = 'stone' ### This is temporatry needs to be set once ore generation is fixed
+			var resourceValue = (get_parent().get_node("resourceTileMap").tile_set.tile_get_name(get_parent().get_node("resourceTileMap").get_cellv(cell)))
 			global.inventory.add(resourceValue, 1)
 			globals.world.get_node("TileMap").mineCell(cell)
 			if resourceValue != "stone":
