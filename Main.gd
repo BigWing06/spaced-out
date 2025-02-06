@@ -10,7 +10,7 @@ func _ready():
 	camera1.target = get_node(global.worldPath+"/Player")
 	camera2.target= get_node(global.worldPath+"/Player2")
 	var texture = ImageTexture.new()
-	texture.create_from_image(global.world.get_node("TileMap").noise.get_image(500, 500))
+	texture.create_from_image(global.world.get_node("TileMap").resourceNoise.get_image(500, 500))
 	$noise.texture = texture
 func splitScreenOn():
 	$Viewports/ViewportContainer2.size_flags_horizontal=3
