@@ -8,6 +8,8 @@ export(float) var persistence = 4
 export(float) var lacunarity = .4
 export(float) var noiseThreshold = .3
 export(int) var groundLevelOffset = 0
+var mainTileReference = {"land":tile_set.find_tile_by_name("planet1Land")}
+var resourceTileReference = {"stone":tile_set.find_tile_by_name("stone")}
 var noise = OpenSimplexNoise.new()
 var world = {}
 var loadedChunks = [] #list to keep track of chunks that are loaded
@@ -24,11 +26,9 @@ func onPlayerChunkChange(playerChunk):
 		if not chunk in loadedChunks:
 			loadedChunks.append(chunk)
 			generateWorld(chunk)
-			print("Generating :" + str(chunk))
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("tile")
 	noise.seed = mapSeed.hash()
 	noise.octaves = octaves
 	noise.period = period
@@ -41,7 +41,6 @@ func _ready():
 	resourceNoise.lacunarity = 500
 	var startingChunks = getSurroundingChunks(Vector2(0, 0)) 
 	startingChunks.append(Vector2(0, 0))
-	print(startingChunks)
 	for chunk in startingChunks:
 		generateWorld(chunk)
 	
@@ -57,19 +56,16 @@ func determineGroundLevel(x):
 	return groundLevelOffset + round(sin(round(x*.1)*1.25))
 	
 func createLandTile(x, y):
-	var landTile = tile_set.find_tile_by_name("planet1Land")
-	set_cell(x, y, landTile, false, false, false, get_cell_autotile_coord(x, y))
+	set_cell(x, y, mainTileReference["land"], false, false, false, get_cell_autotile_coord(x, y))
 	var resourceTileMap = get_parent().get_node("resourceTileMap")
-	for resource in global.resourceInfo.keys():
-		if "generation" in global.resourceInfo[resource].keys():
-			if int(global.currentPlanet) in global.resourceInfo[resource]["generation"].keys():
-				if (resourceNoise.get_noise_2d(x, y) > global.resourceInfo[resource]['generation'][int(global.currentPlanet)]):
-					resourceTileMap.set_cell(x, y, resourceTileMap.tile_set.find_tile_by_name(resource), false, false, false, resourceTileMap.get_cell_autotile_coord(x, y))
+	if (resourceNoise.get_noise_2d(x, y) > .3):
+		global.planetInfo[int(global.currentPlanet)]['generationKey'].shuffle()
+		resourceTileMap.set_cell(x, y, resourceTileMap.tile_set.find_tile_by_name(global.planetInfo[int(global.currentPlanet)]['generationKey'][0]), false, false, false, resourceTileMap.get_cell_autotile_coord(x, y))
 	if (resourceTileMap.get_cell(x, y) == -1):
 		resourceTileMap.set_cell(x, y, resourceTileMap.tile_set.find_tile_by_name("stone"), false, false, false, resourceTileMap.get_cell_autotile_coord(x, y))
 	update_bitmask_area(Vector2(x, y))
 	resourceTileMap.update_bitmask_area(Vector2(x, y))
-func generateWorld(pos):
+func generateWorld(pos): 
 	loadedChunks.append(pos)
 	var chunkOffset = pos*chunkSize
 	for x in range(chunkOffset.x, chunkOffset.x + chunkSize.x):
@@ -86,14 +82,19 @@ func generateWorld(pos):
 				#	set_cell(x, y, 9, false, false, false, get_cell_autotile_coord(x, y))
 	get_parent().get_node("resourceTileMap").update_dirty_quadrants()
 	update_dirty_quadrants()
+	get_parent().get_node("resourceTileMap").update_bitmask_region()
 	
 func mineCell(pos):
 	set_cell(pos.x, pos.y, -1)
 	var resourceTileMap = get_parent().get_node("resourceTileMap")
 	resourceTileMap.set_cell(pos.x, pos.y, -1)
+	get_parent().get_node("resourceTileMap").update_bitmask_region()
 	
 func setCell(pos, resource):
-	set_cell(pos.x, pos.y, 25)
+	set_cell(pos.x, pos.y, mainTileReference["land"])
+	var resourceTileMap = get_parent().get_node("resourceTileMap")
+	resourceTileMap.set_cell(pos.x, pos.y, 12)
+	get_parent().get_node("resourceTileMap").update_bitmask_region()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
