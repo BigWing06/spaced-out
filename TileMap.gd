@@ -1,5 +1,5 @@
 extends TileMap
-export(Vector2) var mapSize  = Vector2(100, 100)	
+export(Vector2) var mapSize  = Vector2(3, 2)	
 export(String) var mapSeed = "Blah Blah Blah"
 export(Vector2) var chunkSize = Vector2(100, 100)
 export(int) var octaves = 3
@@ -10,12 +10,19 @@ export(float) var noiseThreshold = .5
 export(int) var groundLevelOffset = 0
 var noise = OpenSimplexNoise.new()
 var world = {}
+var loadedChunks = [] #list to keep track of chunks that are loaded
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
-
+func onPlayerChunkChange(playerChunk):
+	for chunk in getSurroundingChunks(playerChunk):
+		if not chunk in loadedChunks:
+			loadedChunks.append(chunk)
+			generateWorld(chunk)
+			print("Generating :" + str(chunk))
+		
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	noise.seed = mapSeed.hash()
@@ -23,16 +30,34 @@ func _ready():
 	noise.period = period
 	noise.persistence = persistence
 	noise.lacunarity = lacunarity
-	generateWorld(Vector2(0, 0))
+	var startingChunks = getSurroundingChunks(Vector2(0, 0)) 
+	startingChunks.append(Vector2(0, 0))
+	print(startingChunks)
+	for chunk in startingChunks:
+		generateWorld(chunk)
+	
+func getSurroundingChunks(pos):
+	var coords = []
+	var angles = [0, PI/4, PI/2, 3*PI/4, PI, 5*PI/4, 3*PI/2, 7*PI/4]
+	for i in range(1, 3):
+		for angle in angles:
+			coords.append(Vector2(pos.x+round(cos(angle))*i, pos.y+round(sin(angle))*i))
+	return coords
 	
 func determineGroundLevel(x):
 	return groundLevelOffset + round(sin(round(x*.1)*1.25))
 	
 func generateWorld(pos):
-	for x in range(-chunkSize.x/2, chunkSize.x/2):
-		for y in range(-chunkSize.y/2, chunkSize.y/2):
-			if (noise.get_noise_2d(x, y) < noiseThreshold) and y >= determineGroundLevel(x):
-				set_cell(x, y, 25, false, false, false, get_cell_autotile_coord(x, y))
+	loadedChunks.append(pos)
+	var chunkOffset = pos*chunkSize
+	for x in range(chunkOffset.x, chunkOffset.x + chunkSize.x):
+		for y in range(chunkOffset.y, chunkOffset.y + chunkSize.y):
+			if y >= determineGroundLevel(x):
+				if (noise.get_noise_2d(x, y) < noiseThreshold):
+					set_cell(x, y, 25, false, false, false, get_cell_autotile_coord(x, y))
+					
+				else:
+					set_cell(x, y, 9, false, false, false, get_cell_autotile_coord(x, y))
 				update_bitmask_area(Vector2(x, y))
 	update_dirty_quadrants()
 	
@@ -41,7 +66,6 @@ func mineCell(pos):
 	
 func setCell(pos, resource):
 	set_cell(pos.x, pos.y, 25)
-	print("test")
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

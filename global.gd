@@ -31,6 +31,7 @@ var currentMenu = null
 var upgradeLevels = {'drill':0, 'ship':0}
 var playerAtShip = false
 var player2AtShip = false
+var players = {}
 var world = null
 var worldPath = "/root/Main/Viewports/ViewportContainer/ViewportPlayer1/worldMain"
 var main = null
