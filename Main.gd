@@ -14,7 +14,6 @@ func _ready():
 	$noise.texture = texture
 func splitScreenOn():
 	$Viewports/ViewportContainer2.size_flags_horizontal=3
-	global.hideHud=false
 func splitScreenOff():
 	$Viewports/ViewportContainer2.size_flags_horizontal=0
 	global.hideHud=true

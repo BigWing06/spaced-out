@@ -71,6 +71,7 @@ func generateWorld(pos):
 	for x in range(chunkOffset.x, chunkOffset.x + chunkSize.x):
 		for y in range(chunkOffset.y, chunkOffset.y + chunkSize.y):
 			if y >= determineGroundLevel(x): #Checks to make sure that it is under grounnd level
+				get_parent().get_node("backgroundTileMap").set_cell(x, y, get_parent().get_node("backgroundTileMap").tile_set.find_tile_by_name("landDark"), false, false, false, get_parent().get_node("backgroundTileMap").get_cell_autotile_coord(x, y))
 				if (y > 10):
 					if (noise.get_noise_2d(x, y) < abs(noiseThreshold)/1.5):
 						createLandTile(x, y)
@@ -83,6 +84,7 @@ func generateWorld(pos):
 	get_parent().get_node("resourceTileMap").update_dirty_quadrants()
 	update_dirty_quadrants()
 	get_parent().get_node("resourceTileMap").update_bitmask_region()
+	get_parent().get_node("backgroundTileMap").update_bitmask_region()
 	
 func mineCell(pos):
 	set_cell(pos.x, pos.y, -1)
