@@ -32,9 +32,9 @@
      inkscape:cy="273.65994"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:window-x="-32000"
+     inkscape:window-y="-32000"
+     inkscape:window-maximized="0"
      inkscape:current-layer="layer5" /><defs
      id="defs1"><clipPath
        clipPathUnits="userSpaceOnUse"
@@ -129,7 +129,10 @@
        x="-0.24738482"
        y="0.031145697"
        style="display:inline"
-       transform="translate(0.24738482,0.03115594)" /><image
+       transform="translate(0.24738482,0.03115594)"
+       inkscape:export-filename="planet4TileSet.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" /><image
        width="16.933332"
        height="16.933332"
        preserveAspectRatio="none"

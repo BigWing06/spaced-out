@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/drilll.png-99606e6b4f8636f469b84547cd583c83.stex"
+path="res://.import/Untitled291_20250128151848.PNG-5a7376e7cb7dd007c88030f4633458b9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://playerResources/drill/drilll.png"
-dest_files=[ "res://.import/drilll.png-99606e6b4f8636f469b84547cd583c83.stex" ]
+source_file="res://playerResources/drill/Untitled291_20250128151848.PNG"
+dest_files=[ "res://.import/Untitled291_20250128151848.PNG-5a7376e7cb7dd007c88030f4633458b9.stex" ]
 
 [params]
 
