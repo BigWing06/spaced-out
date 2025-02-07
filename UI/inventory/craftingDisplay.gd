@@ -63,8 +63,8 @@ func checkResource():
 func checkResourceSub():
 	hasResources = true
 	for i in range(len(requiredResources)):
-		if global.inventory.hasAmount(requiredResources[i][0], requiredResources[i][1]):
-			hasResources = false
+		if global.inventory.hasAmount(requiredResources[i][1], requiredResources[i][0]):
+			hasResources = true
 		else:
 			hasResources = false
 		if not hasResources:
