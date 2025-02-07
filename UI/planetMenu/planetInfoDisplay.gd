@@ -38,9 +38,13 @@ func _on_Button_pressed():
 	globals.inventory.add("rocket_fuel", -abs(int(globals.currentPlanet)-planetNum)*10)
 	
 	globals.currentPlanet = str(planetNum)
+	global.world.get_node("TileMap").mapSeed = randi()*100 + randi()*100
 	tileMap.setup()
 	get_parent().toggleEscape()
 	get_node(global.worldPath+'/Player').position = global.playerStartPos[0]
 	get_node(global.worldPath+'/Player2').position = global.playerStartPos[1]
-	print("planet" + global.currentPlanet)
-	#get_node(global.worldPath+'/background').texture = load('res://tiles/Planet' + str(int(globals.currentPlanet)+1) + 'Background.png')
+	print('Planet' + str(int(globals.currentPlanet)+1) + 'Background.png')
+	var background = Image.new()
+	background.load("res://tiles/Planet2Background.png")
+	global.world.get_parent().get_parent().get_node("ViewportPlayer1/ParallaxBackground/ParallaxLayer/Sprite").texture = background
+	global.world.get_parent().get_parent().get_parent().get_node("ViewportContainer2/ViewportPlayer2/ParallaxBackground/ParallaxLayer/Sprite").texture = load('res://tiles/Planet' + str(int(globals.currentPlanet)+1) + 'Background.png')

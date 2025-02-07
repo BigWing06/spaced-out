@@ -1,6 +1,6 @@
 extends TileMap
 export(Vector2) var mapSize  = Vector2(3, 2)	
-export(String) var mapSeed = "two"
+export(int) var mapSeed = 345
 export(Vector2) var chunkSize = Vector2(10, 10)
 export(int) var octaves = 3
 export(int) var period = 3
@@ -45,18 +45,18 @@ func onPlayerChunkChange(playerChunk):
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	noise.seed = mapSeed.hash()
 	noise.octaves = octaves
 	noise.period = period
 	noise.persistence = persistence
 	noise.lacunarity = lacunarity
-	resourceNoise.seed = mapSeed.hash()
 	resourceNoise.period = period
 	resourceNoise.persistence = 500
 	resourceNoise.lacunarity = 500
 	setup()
 	
 func setup():
+	noise.seed = mapSeed
+	resourceNoise.seed = mapSeed
 	mainTileReference = {"land":tile_set.find_tile_by_name("planet" + global.currentPlanet + "Land")}
 	var startingChunks = getSurroundingChunks(Vector2(0, 0)) 
 	startingChunks.append(Vector2(0, 0))
