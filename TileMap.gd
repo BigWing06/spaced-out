@@ -118,6 +118,4 @@ func setCell(pos, resource):
 	get_parent().get_node("resourceTileMap").update_bitmask_region()
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+

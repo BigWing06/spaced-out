@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://Camera2DPlayer1.gd" type="Script" id=3]
 [ext_resource path="res://Camera2DPlayer2.gd" type="Script" id=4]
+[ext_resource path="res://UI/ResourceInfo/ResourceInfo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/gameHud/playerHud.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/gameHud/player2Hud.gd" type="Script" id=7]
 [ext_resource path="res://icon.png" type="Texture" id=8]
@@ -11,6 +12,10 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="ResourceInfo" parent="." instance=ExtResource( 5 )]
+position = Vector2( 16, 570 )
+z_index = 50
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1080.0
@@ -94,3 +99,7 @@ margin_top = 80.0
 margin_right = 855.0
 margin_bottom = 580.0
 texture = ExtResource( 8 )
+
+[connection signal="mouse_entered" from="Viewports/ViewportContainer" to="." method="_on_ViewportContainer_mouse_entered"]
+[connection signal="mouse_exited" from="Viewports/ViewportContainer" to="." method="_on_ViewportContainer_mouse_exited"]
+[connection signal="mouse_entered" from="Viewports/ViewportContainer2" to="." method="_on_ViewportContainer2_mouse_entered"]
