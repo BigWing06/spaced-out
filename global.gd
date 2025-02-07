@@ -13,10 +13,13 @@ const resourceInfo = {
 const upgradeInfos = {
 	'ship':[[0], [1, [['aluminum', 50]]], [2, [['aluminum', 100], ['copper', 10]]], [3, [['aluminum', 150], ['copper', 25]]], [4, [['aluminum', 200], ['copper', 50]]]], 
 	'drill':[[.24], [.2, [["titanium", 25]]], [.16, [["titanium", 50], ["copper", 5]]], [.12, [["titanium", 75], ["copper", 10]]]]}
-const planetInfo = [{'name':'Planet 1', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}, {'name':'Planet 2', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}, {'name':'Planet 3', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}, {'name':'Planet 4', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}]
+const planetInfo = [
+	{'name':'Florp', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}, 
+	{'name':'Planet 2', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}, 
+	{'name':'Planet 3', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}, 
+	{'name':'Planet 4', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}]
 const oreGenerationKey = {'0':[2, 5, 6], '1':[8, 5, 2], '2':[7, 2, 5], '3':[2, 2, 2]}
-const playerStartPos = [Vector2(768, 320), Vector2(900, 320)]
-var oreGenerationMap = [[Vector2(1,-1), Vector2(0, 0), Vector2(1, 0), Vector2(-1, 1)], [Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 1)], [Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(-1, 1), Vector2(1, 1)], [Vector2(-1, -1), Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 1)], [Vector2(-1, -1), Vector2(1, -1), Vector2(0, 0), Vector2(0, 1), Vector2(1, 1)], [Vector2(1, -1), Vector2(0, 0), Vector2(-1, 1), Vector2(0, 1)], [Vector2(0, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(1, 1)], [Vector2(-1, -1), Vector2(1, -1), Vector2(-1, 0), Vector2(0, 0), Vector2(0, 1)], [Vector2(-1, -1), Vector2(0, 0), Vector2(1, 0), Vector2(-1, 1), Vector2(0, 1)]]
+const playerStartPos = [Vector2(-40, -15), Vector2(40, -15)]
 var currentPlanet = '0'
 var playerInfo = {'movementSpeed':800, 'health':100}
 var player2Info = {'movementSpeed':800, 'health':100}
@@ -31,6 +34,7 @@ var currentMenu = null
 var upgradeLevels = {'drill':0, 'ship':0}
 var playerAtShip = false
 var player2AtShip = false
+var players = {}
 var world = null
 var worldPath = "/root/Main/Viewports/ViewportContainer/ViewportPlayer1/worldMain"
 var main = null

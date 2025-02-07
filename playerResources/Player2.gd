@@ -16,11 +16,15 @@ var prePos = null
 var direction = 1
 var mining = false
 var stop = false
+signal chunkChanged
+var chunk = Vector2(0, 0)
+var preChunk = Vector2(0, 0)
 
 var velocity = Vector2.ZERO
 
 func _ready():
 	position = globals.playerStartPos[1]
+	global.players[2] = self
 
 func _physics_process(delta):
 	var moveRight = Input.is_action_pressed("playerTwoMoveRight")
@@ -53,5 +57,10 @@ func _physics_process(delta):
 		scale.x = -1
 		
 	velocity = move_and_slide(velocity, Vector2.UP)
+	var tileMap = global.world.get_node("TileMap") #Gets the tilemap node from the main scene 
+	chunk = (tileMap.world_to_map(position)/tileMap.chunkSize).floor()
+	if preChunk != chunk:
+		tileMap.onPlayerChunkChange(chunk)
+		preChunk = chunk
 func getSavePos():
 	return [position.x, position.y]

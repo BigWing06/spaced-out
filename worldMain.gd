@@ -7,7 +7,6 @@ func toggleEscape():
 var inventory = false
 
 func _process(delta):
-	###$background.position.x = get_node(global.worldPath+'/Player').position.x
 	if Input.is_action_just_pressed("pause"):
 		globals.currentMenu.toggleEscape()
 	if Input.is_action_just_pressed("inventory"):
@@ -75,7 +74,7 @@ func adjustHealth(amount):
 		globals.inventory = {}
 		globals.playerInfo['health'] = 100
 		globals.oxygenLevel = 100+20*globals.upgradeLevels['ship']
-		get_node(global.worldPath+'/Player').position = Vector2(768, 320)
+		get_node(global.worldPath+'/Player').position = Vector2(-2, -136)
 
 func adjustPlayer2Health(amount):
 	globals.player2Info['health'] += amount
@@ -84,7 +83,7 @@ func adjustPlayer2Health(amount):
 		globals.inventory = {}
 		globals.player2Info['health'] = 100
 		globals.oxygen2Level = 100+20*globals.upgradeLevels['ship']
-		get_node(global.worldPath+'/Player2').position = Vector2(768, 320)
+		get_node(global.worldPath+'/Player2').position = Vector2(-2, -136)
 func _on_healthTimer_timeout():
 	$healthTimer.start()
 	adjustHealth(5)

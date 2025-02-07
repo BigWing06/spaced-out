@@ -8,6 +8,7 @@ onready var movementSpeed = playerInfo['movementSpeed']
 onready var tileMap = get_parent().get_node("TileMap")
 onready var mineTilemap = get_parent().get_node("miningTileMap")
 onready var mineTimer = get_parent().get_node("mineTimer")
+signal chunkChanged
 var mineCells = []
 var mineCellState = -1
 var mineStartPos
@@ -16,11 +17,15 @@ var prePos = null
 var direction = 1
 var mining = false
 var stop = false
+var chunk = Vector2(0, 0)
+var preChunk = Vector2(0, 0)
 
 var velocity = Vector2.ZERO
 
 func _ready():
 	position = globals.playerStartPos[0]
+	global.players[1] = self
+	
 
 func _physics_process(delta):
 	var moveRight = Input.is_action_pressed("playerOneMoveRight")
@@ -111,13 +116,20 @@ func _physics_process(delta):
 		if get_viewport_rect().has_point(rawPos):
 			var playerPosition = globals.getTileMapPos(position)
 			var cameraPos = $Camera2D.get_camera_position()
-			placeTileMapPos = globals.getTileMapPos(Vector2(rawPos.x+cameraPos.x-532, rawPos.y+cameraPos.y-300))
+			placeTileMapPos = global.world.get_node("TileMap").world_to_map(get_viewport().get_mouse_position()+position-(get_viewport().size)/2)
 			if abs(placeTileMapPos.x-playerPosition.x)>1 or abs(placeTileMapPos.y-playerPosition.y)>1:
 				if globals.world.get_node("TileMap").get_cellv(placeTileMapPos) == -1:
-					if globals.inventory[1] > 0:
-						globals.inventory[1] = globals.inventory[1] - 1
-						globals.world.get_node("TileMap").set_cellv(placeTileMapPos, 25)
+					if global.inventory.hasAmount(1, "stone"):
+						globals.inventory.add("stone", -1)
+						globals.world.get_node("TileMap").setCell(placeTileMapPos, 25)
 						globals.world.get_node("TileMap").update_bitmask_area(placeTileMapPos)
+	var tileMap = global.world.get_node("TileMap") #Gets the tilemap node from the main scene 
+	chunk = (tileMap.world_to_map(position)/tileMap.chunkSize).floor()
+	if preChunk != chunk:
+		tileMap.onPlayerChunkChange(chunk)
+		
+	
+
 func getSavePos():
 	return [position.x, position.y]
 	
@@ -136,11 +148,12 @@ func updateMineState():
 		mineCellState = -1
 		for cell in mineCells:
 			mineTilemap.set_cellv(cell, mineCellState)
-			var resourceValue = 'stone' ### This is temporatry needs to be set once ore generation is fixed
-			globals.inventory.add(resourceValue, 1)
-			globals.world.get_node("TileMap").mineCell(cell)
-			if resourceValue != "stone":
-				get_parent().get_node("resourceTileMap").set_cellv(cell, -1)
+			if get_parent().get_node("resourceTileMap").get_cellv(cell) != -1:
+				var resourceValue = (get_parent().get_node("resourceTileMap").tile_set.tile_get_name(get_parent().get_node("resourceTileMap").get_cellv(cell)))
+				global.inventory.add(resourceValue, 1)
+				globals.world.get_node("TileMap").mineCell(cell)
+				if resourceValue != "stone":
+					get_parent().get_node("resourceTileMap").set_cellv(cell, -1)
 		for cell in mineCells:
 			globals.world.get_node("TileMap").update_bitmask_area(cell)
 		mineCells = []

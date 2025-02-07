@@ -15,11 +15,15 @@ func _ready():
 		bttn.showPlanet(i)
 func toggleEscape():
 	if visible == false:
+		global.hideHud = true
+		global.main.splitScreenOff()
 		globals.currentMenu = self
 		get_parent().setPauseState(true)
 		visible = true
 		$infoDisplay.isValid()
 	else:
+		global.hideHud = false
+		global.main.splitScreenOn()
 		globals.currentMenu = get_node('/root/worldMain/pauseMenu')
 		get_parent().setPauseState(false)
 		visible = false

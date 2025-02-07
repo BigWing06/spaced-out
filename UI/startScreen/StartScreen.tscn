@@ -1,20 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/startScreen/startButton.png" type="Texture" id=1]
-[ext_resource path="res://Roboto-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Start Logo.PNG" type="Texture" id=2]
 [ext_resource path="res://UI/startScreen/StartScreen.gd" type="Script" id=3]
 [ext_resource path="res://baseTheme.tres" type="Theme" id=4]
-[ext_resource path="res://UI/startScreen/loadButton.png" type="Texture" id=5]
 [ext_resource path="res://UI/startScreen/startButtonHovered.png" type="Texture" id=6]
-[ext_resource path="res://UI/startScreen/loadButtonHovered.png" type="Texture" id=7]
 [ext_resource path="res://UI/startScreen/startBackground.png" type="Texture" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 2 )
-
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
 
 [node name="Control" type="CanvasLayer"]
 layer = 2
@@ -28,44 +19,28 @@ margin_right = 1026.0
 margin_bottom = 599.0
 texture = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -140.5
-margin_top = -150.5
-margin_right = 140.5
-margin_bottom = -89.5
-theme = SubResource( 2 )
-text = "Spaced Out"
-align = 1
-
 [node name="newButton" type="TextureButton" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -75.0
-margin_top = -52.0
+margin_top = 36.0
 margin_right = 75.0
-margin_bottom = -2.0
+margin_bottom = 86.0
 theme = ExtResource( 4 )
 texture_normal = ExtResource( 1 )
 texture_hover = ExtResource( 6 )
 
-[node name="loadButton" type="TextureButton" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -75.0
-margin_top = 19.0
-margin_right = 75.0
-margin_bottom = 69.0
-theme = ExtResource( 4 )
-texture_normal = ExtResource( 5 )
-texture_hover = ExtResource( 7 )
+margin_left = -283.5
+margin_top = 128.0
+margin_right = 283.5
+margin_bottom = 211.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
 
 [connection signal="pressed" from="newButton" to="." method="_on_newButton_pressed"]
-[connection signal="pressed" from="loadButton" to="." method="_on_loadButton_pressed"]
