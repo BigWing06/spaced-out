@@ -77,9 +77,9 @@ func _on_craftButton_pressed():
 	for r in requiredResources:
 		globals.inventory.add(r[0], -r[1])
 	if upgradeInfo[0] == 'item':
-		if not upgradeInfo[1] in globals.inventory.keys():
-			globals.inventory[upgradeInfo[1]] = 0
-		globals.inventory[upgradeInfo[1]] += 1
+		if not upgradeInfo[1] in globals.inventory.inventory.keys():
+			globals.inventory.inventory[upgradeInfo[1]] = 0
+		globals.inventory.inventory[upgradeInfo[1]] += 1
 		checkResource()
 	else:
 		globals.upgradeLevels[upgradeInfo[1]] += 1

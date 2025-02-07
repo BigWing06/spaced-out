@@ -17,4 +17,4 @@ func showItem(i):
 
 
 func _on_Control_pressed():
-	get_node('/root/worldMain/inventory/craftMenu/upgradeViewer').display(item)
+	get_node(global.worldPath+'/inventory/craftMenu/upgradeViewer').display(item)

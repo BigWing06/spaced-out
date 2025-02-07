@@ -17,7 +17,7 @@ func showPlanet(num):
 	
 
 func _on_Button_pressed():
-	get_node('/root/worldMain/planetMenu/infoDisplay').displayPlanet(planetNum)
+	get_node(global.worldPath+'/planetMenu/infoDisplay').displayPlanet(planetNum)
 
 
 func _on_Button_mouse_entered():
