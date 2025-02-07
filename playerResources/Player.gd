@@ -127,7 +127,7 @@ func _physics_process(delta):
 	chunk = (tileMap.world_to_map(position)/tileMap.chunkSize).floor()
 	if preChunk != chunk:
 		tileMap.onPlayerChunkChange(chunk)
-		preChunk = chunk
+		
 	
 
 func getSavePos():

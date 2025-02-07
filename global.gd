@@ -19,7 +19,7 @@ const planetInfo = [
 	{'name':'Planet 3', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}, 
 	{'name':'Planet 4', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}]
 const oreGenerationKey = {'0':[2, 5, 6], '1':[8, 5, 2], '2':[7, 2, 5], '3':[2, 2, 2]}
-const playerStartPos = [Vector2(0, -5), Vector2(10, -5)]
+const playerStartPos = [Vector2(-40, -15), Vector2(40, -15)]
 var currentPlanet = '0'
 var playerInfo = {'movementSpeed':800, 'health':100}
 var player2Info = {'movementSpeed':800, 'health':100}
