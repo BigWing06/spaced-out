@@ -8,7 +8,7 @@ export(float) var persistence = 4
 export(float) var lacunarity = .4
 export(float) var noiseThreshold = .3
 export(int) var groundLevelOffset = 0
-var mainTileReference = {"land":tile_set.find_tile_by_name("planet1Land")}
+var mainTileReference = {"land":tile_set.find_tile_by_name("planet0Land")}
 var resourceTileReference = {"stone":tile_set.find_tile_by_name("stone")}
 var noise = OpenSimplexNoise.new()
 var world = {}
@@ -16,7 +16,23 @@ var loadedChunks = [] #list to keep track of chunks that are loaded
 
 var resourceNoise = OpenSimplexNoise.new()
 
+var masterWorldDict = {}
 
+func save():
+	var resourceTileMap = get_parent().get_node("resourceTileMap")
+	masterWorldDict[int(global.currentPlanet)] = {}
+	var cellDict = masterWorldDict[int(global.currentPlanet)]
+	for cell in resourceTileMap.get_used_cells():
+		cellDict[cell] = resourceTileMap.tile_set.tile_get_name(resourceTileMap.get_cellv(cell))
+
+func reset():
+	var resourceTileMap = get_parent().get_node("resourceTileMap")
+	resourceTileMap.clear()
+	clear()
+	var backgroundTileMap = get_parent().get_node("backgroundTileMap")
+	backgroundTileMap.clear()
+	loadedChunks = []
+		
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -35,10 +51,13 @@ func _ready():
 	noise.persistence = persistence
 	noise.lacunarity = lacunarity
 	resourceNoise.seed = mapSeed.hash()
-	resourceNoise.octaves = 10
 	resourceNoise.period = period
 	resourceNoise.persistence = 500
 	resourceNoise.lacunarity = 500
+	setup()
+	
+func setup():
+	mainTileReference = {"land":tile_set.find_tile_by_name("planet" + global.currentPlanet + "Land")}
 	var startingChunks = getSurroundingChunks(Vector2(0, 0)) 
 	startingChunks.append(Vector2(0, 0))
 	for chunk in startingChunks:
@@ -71,7 +90,7 @@ func generateWorld(pos):
 	for x in range(chunkOffset.x, chunkOffset.x + chunkSize.x):
 		for y in range(chunkOffset.y, chunkOffset.y + chunkSize.y):
 			if y >= determineGroundLevel(x): #Checks to make sure that it is under grounnd level
-				get_parent().get_node("backgroundTileMap").set_cell(x, y, get_parent().get_node("backgroundTileMap").tile_set.find_tile_by_name("landDark"), false, false, false, get_parent().get_node("backgroundTileMap").get_cell_autotile_coord(x, y))
+				get_parent().get_node("backgroundTileMap").set_cell(x, y, get_parent().get_node("backgroundTileMap").tile_set.find_tile_by_name("land" + global.currentPlanet + "Dark"), false, false, false, get_parent().get_node("backgroundTileMap").get_cell_autotile_coord(x, y))
 				if (y > 10):
 					if (noise.get_noise_2d(x, y) < abs(noiseThreshold)/1.5):
 						createLandTile(x, y)

@@ -148,11 +148,12 @@ func updateMineState():
 		mineCellState = -1
 		for cell in mineCells:
 			mineTilemap.set_cellv(cell, mineCellState)
-			var resourceValue = (get_parent().get_node("resourceTileMap").tile_set.tile_get_name(get_parent().get_node("resourceTileMap").get_cellv(cell)))
-			global.inventory.add(resourceValue, 1)
-			globals.world.get_node("TileMap").mineCell(cell)
-			if resourceValue != "stone":
-				get_parent().get_node("resourceTileMap").set_cellv(cell, -1)
+			if get_parent().get_node("resourceTileMap").get_cellv(cell) != -1:
+				var resourceValue = (get_parent().get_node("resourceTileMap").tile_set.tile_get_name(get_parent().get_node("resourceTileMap").get_cellv(cell)))
+				global.inventory.add(resourceValue, 1)
+				globals.world.get_node("TileMap").mineCell(cell)
+				if resourceValue != "stone":
+					get_parent().get_node("resourceTileMap").set_cellv(cell, -1)
 		for cell in mineCells:
 			globals.world.get_node("TileMap").update_bitmask_area(cell)
 		mineCells = []

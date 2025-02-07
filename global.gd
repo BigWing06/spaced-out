@@ -15,11 +15,11 @@ const upgradeInfos = {
 	'drill':[[.24], [.2, [["titanium", 25]]], [.16, [["titanium", 50], ["copper", 5]]], [.12, [["titanium", 75], ["copper", 10]]]]}
 const planetInfo = [
 	{'name':'Florp', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}, 
-	{'name':'Planet 2', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}, 
-	{'name':'Planet 3', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}, 
-	{'name':'Planet 4', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10}]
+	{'name':'Planet 2', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}, 
+	{'name':'Planet 3', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}, 
+	{'name':'Planet 4', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}]
 const oreGenerationKey = {'0':[2, 5, 6], '1':[8, 5, 2], '2':[7, 2, 5], '3':[2, 2, 2]}
-const playerStartPos = [Vector2(0, 0), Vector2(10, 0)]
+const playerStartPos = [Vector2(0, -5), Vector2(10, -5)]
 var currentPlanet = '0'
 var playerInfo = {'movementSpeed':800, 'health':100}
 var player2Info = {'movementSpeed':800, 'health':100}
