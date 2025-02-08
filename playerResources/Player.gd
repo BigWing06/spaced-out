@@ -124,7 +124,6 @@ func _physics_process(delta):
 		var placeTileMapPos
 		if get_viewport_rect().has_point(rawPos):
 			var playerPosition = globals.getTileMapPos(position)
-			var cameraPos = $Camera2D.get_camera_position()
 			placeTileMapPos = global.world.get_node("TileMap").world_to_map(get_viewport().get_mouse_position()+position-(get_viewport().size)/2)
 			if abs(placeTileMapPos.x-playerPosition.x)>1 or abs(placeTileMapPos.y-playerPosition.y)>1:
 				if globals.world.get_node("TileMap").get_cellv(placeTileMapPos) == -1:
@@ -172,3 +171,13 @@ func updateMineState():
 				mineTilemap.set_cellv(cell, mineCellState+3)
 	if mineCellState != -1:
 		mineTimer.start()
+func showItemData():
+	var mapPos = null
+	if global.p1Screen:
+		mapPos = get_node(global.worldPath+"/resourceTileMap").world_to_map(get_viewport().get_mouse_position()+position-(get_viewport().size)/2)
+	else:
+		mapPos = get_node(global.worldPath+"/resourceTileMap").world_to_map(get_viewport().get_mouse_position()+get_node(global.worldPath+"/Player2").position-((get_viewport().size)/2)-(Vector2(get_viewport().size.x,0)))
+	var resourceValue = (get_parent().get_node("resourceTileMap").tile_set.tile_get_name(get_parent().get_node("resourceTileMap").get_cellv(mapPos)))
+	global.resourceInfoNode.setText(resourceValue)
+func _process(delta):
+	showItemData()

@@ -14,19 +14,21 @@ func _ready():
 		$VBoxContainer.add_child(bttn)
 		bttn.showPlanet(i)
 func toggleEscape():
-	if visible == false:
+	if visible == false and global.currentOverlay == "none":
 		global.hideHud = true
 		global.main.splitScreenOff()
 		globals.currentMenu = self
 		get_parent().setPauseState(true)
 		visible = true
 		$infoDisplay.isValid()
-	else:
+		global.currentOverlay = "planet"
+	elif global.currentOverlay == "planet":
 		global.hideHud = false
 		global.main.splitScreenOn()
 		globals.currentMenu = get_node('/root/worldMain/pauseMenu')
 		get_parent().setPauseState(false)
 		visible = false
+		global.currentOverlay = "none"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -12,11 +12,13 @@ func _on_Button2_pressed():
 	globals.gamePaused = true
 
 func toggleEscape():
-	if visible == false:
+	if visible == false and global.currentOverlay=="none":
 		get_parent().setPauseState(true)
 		visible = true
 		global.main.splitScreenOff()
-	else:
+		global.currentOverlay = "pause"
+	elif global.currentOverlay == "pause":
 		get_parent().setPauseState(false)
 		visible = false
 		global.main.splitScreenOn()
+		global.currentOverlay = "none"
