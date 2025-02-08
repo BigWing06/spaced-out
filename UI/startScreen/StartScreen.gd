@@ -3,8 +3,8 @@ onready var globals = get_node("/root/global")
 
 func _on_newButton_pressed():
 	globals.newGame()
-	get_tree().change_scene("res://Main.tscn")
-	globals.gamePaused = false
+	get_tree().change_scene("res://Animation/Intro.tscn")
+	globals.gamePaused = true
 
 func _on_loadButton_pressed():
 	var file = File.new()

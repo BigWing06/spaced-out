@@ -45,7 +45,10 @@ var worldPath = "/root/Main/Viewports/ViewportContainer/ViewportPlayer1/worldMai
 var main = null
 var hideHud = false
 var inventory = preload('res://playerResources/inventoryManager.gd').new()
-
+var resourceInfoNode = null
+var p1Screen=true
+var addedUI = null
+var currentOverlay="none"
 func newGame():
 	currentMenu = null
 	inventory.setup()
