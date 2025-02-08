@@ -9,4 +9,9 @@ func _process(delta):
 		self.show()
 var lastCell = null
 func setText(text):
-	$Label.text=text
+	if text in global.resourceInfo.keys():
+		$Label.text=global.resourceInfo[text]["name"]
+	if text == "":
+		hide()
+	else:
+		show()
