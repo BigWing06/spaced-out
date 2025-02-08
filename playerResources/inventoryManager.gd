@@ -12,7 +12,6 @@ func setup():
 	validResources = global.resourceInfo.keys()
 	for resource in global.resourceInfo.keys(): #Adds all of the valid resorucces to the dictionary as to not cause errors later
 		inventory[resource] = 0
-		add(resource, 1000)
 		
 func checkResource(resource):
 	if resource in validResources: #Checks to make sure resource is a valid resrouce otherwise throws error
