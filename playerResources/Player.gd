@@ -31,6 +31,11 @@ func _physics_process(delta):
 	var moveRight = Input.is_action_pressed("playerOneMoveRight")
 	var moveLeft = Input.is_action_pressed("playerOneMoveLeft")
 	var jump = Input.is_action_pressed("playerOneJump")
+	if Input.is_action_just_pressed("playerOneMoveLeft") or Input.is_action_just_pressed("playerOneMoveRight") or Input.is_action_just_pressed("playerTwoMoveLeft") or Input.is_action_just_pressed("playerTwoMoveRight") and not (Input.is_action_pressed("playerOneMoveLeft") or Input.is_action_pressed("playerOneMoveRight") or Input.is_action_pressed("playerTwoMoveLeft") or Input.is_action_pressed("playerOneMoveRight")):
+		$AnimationPlayer2.play("fadeIn")
+	if Input.is_action_just_released("playerOneMoveLeft") or Input.is_action_just_released("playerOneMoveRight") or Input.is_action_just_released("playerTwoMoveLeft") or Input.is_action_just_released("playerTwoMoveRight"): 
+		if not (Input.is_action_pressed("playerOneMoveLeft") or Input.is_action_pressed("playerOneMoveRight") or Input.is_action_pressed("playerTwoMoveLeft") or Input.is_action_pressed("playerOneMoveRight")):
+			$AnimationPlayer2.play("fadeOut")
 	velocity.y += gravity
 	if jump and is_on_floor():
 		velocity.y = jumpAmount
@@ -61,6 +66,10 @@ func _physics_process(delta):
 	var tileMapPos = globals.getTileMapPos(position)
 	prePos = tileMapPos
 	var startPos = Vector2(tileMapPos.x-globals.renderDistance.x, tileMapPos.y-globals.renderDistance.y)
+	if Input.is_action_just_pressed("mine"):
+		$AnimationPlayer.play("fadeIn")
+	if Input.is_action_just_released("mine"):
+		$AnimationPlayer.play("fadeOut")
 	if Input.is_action_pressed("mine") and mining == false:
 		mineTimer.wait_time = globals.upgradeInfos['drill'][globals.upgradeLevels['drill']][0]
 		var rawPos = get_viewport().get_mouse_position()
