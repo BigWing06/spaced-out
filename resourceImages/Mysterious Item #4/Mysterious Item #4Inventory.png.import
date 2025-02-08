@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SpaceShip.PNG-eabb8f9d72015877702f3a9fc3e3baa3.stex"
+path="res://.import/Mysterious Item #4Inventory.png-a7b658b8089594ea75861ea7d4a94742.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SpaceShip.PNG"
-dest_files=[ "res://.import/SpaceShip.PNG-eabb8f9d72015877702f3a9fc3e3baa3.stex" ]
+source_file="res://resourceImages/Mysterious Item #4/Mysterious Item #4Inventory.png"
+dest_files=[ "res://.import/Mysterious Item #4Inventory.png-a7b658b8089594ea75861ea7d4a94742.stex" ]
 
 [params]
 
