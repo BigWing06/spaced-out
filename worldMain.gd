@@ -14,6 +14,14 @@ func _process(delta):
 	if Input.is_action_just_pressed("planetMenu"):
 		if globals.playerAtShip:
 			get_node(global.worldPath+'/planetMenu').toggleEscape()
+	if (abs($Player.position.x-$Player2.position.x)>3000):
+		$globalLight.hide()
+		$player1Light.show()
+		$player2Light.show()
+	else:
+		$globalLight.show()
+		$player1Light.hide()
+		$player2Light.hide()
 		
 func setPauseState(state):
 	if state == true:
