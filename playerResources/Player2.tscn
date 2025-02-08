@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://playerResources/Player2.gd" type="Script" id=1]
 [ext_resource path="res://playerResources/PlayerSegments/blueHand.png" type="Texture" id=2]
 [ext_resource path="res://playerResources/PlayerSegments/blueBody.png" type="Texture" id=3]
+[ext_resource path="res://playerResources/playerLight.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 21.0
@@ -35,3 +36,12 @@ texture = ExtResource( 2 )
 position = Vector2( -204.983, 55.7805 )
 rotation = 0.361283
 texture = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+light_mask = 3
+position = Vector2( 3, -5 )
+scale = Vector2( 5.96094, 5.96094 )
+texture = ExtResource( 4 )
+mode = 2
+shadow_color = Color( 0, 0, 0, 0.745098 )
+shadow_item_cull_mask = 3

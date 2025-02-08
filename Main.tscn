@@ -53,6 +53,7 @@ position = Vector2( 0, 297 )
 texture = ExtResource( 9 )
 
 [node name="ViewportContainer2" type="ViewportContainer" parent="Viewports"]
+light_mask = 2
 margin_left = 513.0
 margin_right = 1023.0
 margin_bottom = 602.0

@@ -11,12 +11,12 @@ const resourceInfo = {
 	'copper':{'name':'Copper', 'tilemap':[3, 8]}, 
 	'titanium':{'name':'Titanium', 'tilemap':[4, 10]}}
 const upgradeInfos = {
-	'ship':[[0], [1, [['aluminum', 50]]], [2, [['aluminum', 100], ['copper', 10]]], [3, [['aluminum', 150], ['copper', 25]]], [4, [['aluminum', 200], ['copper', 50]]]], 
-	'drill':[[.24], [.2, [["titanium", 25]]], [.16, [["titanium", 50], ["copper", 5]]], [.12, [["titanium", 75], ["copper", 10]]]]}
+	'ship':[[0], [1, [['aluminum', 15]]], [2, [['aluminum', 30], ['copper', 10]]], [3, [['aluminum', 25], ['copper', 75]]], [4, [['aluminum', 90], ['copper', 50]]]], 
+	'drill':[[.24], [.2, [["titanium", 20]]], [.16, [["titanium", 45], ["copper", 10]]], [.12, [["titanium", 65], ["copper", 15]]]]}
 const planetInfo = [
-	{'name':'Florp', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}, 
-	{'name':'Planet 2', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}, 
-	{'name':'Planet 3', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}, 
+	{'name':'Florp', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', 'coal', 'coal', "organic_material", "organic_material", "organic_material", "organic_material", "organic_material", "organic_material", "aluminum"]}, 
+	{'name':'Planet 2', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper","copper", "copper","copper", "titanium", "organicMaterial", "aluminum"]}, 
+	{'name':'Planet 3', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":["copper", 'coal', "coal","coal", "titanium","titanium","titanium", "organicMaterial","organicMaterial", "aluminum", "aluminum", "aluminum", "aluminum", 'coal', "coal","coal", "titanium","titanium","titanium", "organicMaterial","organicMaterial", "aluminum", "aluminum", "aluminum", "aluminum", 'coal', "coal","coal", "titanium","titanium","titanium", "organicMaterial","organicMaterial", "aluminum", "aluminum", "aluminum", "aluminum", 'coal', "coal","coal", "titanium","titanium","titanium", "organicMaterial","organicMaterial", "aluminum", "aluminum", "aluminum", "aluminum", 'coal', "coal","coal", "titanium","titanium","titanium", "organicMaterial","organicMaterial", "aluminum", "aluminum", "aluminum", "aluminum"]}, 
 	{'name':'Planet 4', 'icon':'res://UI/planetMenu/planetTest.png', 'fuelAmount':10, "generationKey":['coal', "copper", "titanium", "organicMaterial", "aluminum"]}]
 const oreGenerationKey = {'0':[2, 5, 6], '1':[8, 5, 2], '2':[7, 2, 5], '3':[2, 2, 2]}
 const playerStartPos = [Vector2(-40, -15), Vector2(40, -15)]
