@@ -18,3 +18,13 @@ func splitScreenOn():
 func splitScreenOff():
 	$Viewports/ViewportContainer2.size_flags_horizontal=0
 	global.hideHud=true
+
+
+func _on_ViewportContainer_mouse_entered():
+	global.p1Screen=true
+	
+
+
+func _on_ViewportContainer_mouse_exited():
+	global.p1Screen=false
+

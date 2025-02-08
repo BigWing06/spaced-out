@@ -24,6 +24,8 @@ func checkResource(resource):
 func add(resource, amount): #Adds an amount of a specific resrouce to inventory
 	if checkResource(resource):
 		inventory[resource] += amount
+		if  global.addedUI:
+			global.addedUI.addItem(resource,amount)
 
 func getAmount(resource): #Gets amount of a specific resource in inventory
 	if checkResource(resource):
