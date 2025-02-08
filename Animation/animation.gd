@@ -1,11 +1,7 @@
 extends Node2D
-var nextScene =  "res://Main.tscn"
-var animation = "Intro"
+var animation = "Ending"
 
 func _ready():
-	$AnimationPlayer.play(animation)
+	pass
+	#$AnimationPlayer.play(animation)
 
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	global.gamePaused = false
-	get_tree().change_scene(nextScene)
