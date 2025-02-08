@@ -36,14 +36,17 @@ func _ready():
 				craftItemSceneList.append(craftItem)
 
 func toggleEscape():
-	if visible == false:
+	if visible == false and global.currentOverlay =="none":
+		print("sdfhsdjfhskdjfhjksdfhsjkhdf")
 		globals.currentMenu = self
 		get_parent().setPauseState(true)
 		visible = true
 		inventoryUpdate()
 		get_node(global.worldPath+'/inventory/craftMenu/upgradeViewer').checkResource()
 		global.main.splitScreenOff()
-	else:
+		global.currentOverlay = "inventory"
+	elif global.currentOverlay == "inventory":
+		global.currentOverlay="none"
 		globals.currentMenu = get_node(global.worldPath+'/pauseMenu')
 		get_parent().setPauseState(false)
 		visible = false
