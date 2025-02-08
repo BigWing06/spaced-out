@@ -79,6 +79,7 @@ func createLandTile(x, y):
 	var resourceTileMap = get_parent().get_node("resourceTileMap")
 	if (resourceNoise.get_noise_2d(x, y) > .3):
 		global.planetInfo[int(global.currentPlanet)]['generationKey'].shuffle()
+		print(resourceTileMap.tile_set.find_tile_by_name(global.planetInfo[int(global.currentPlanet)]['generationKey'][0]))
 		resourceTileMap.set_cell(x, y, resourceTileMap.tile_set.find_tile_by_name(global.planetInfo[int(global.currentPlanet)]['generationKey'][0]), false, false, false, resourceTileMap.get_cell_autotile_coord(x, y))
 	if (resourceTileMap.get_cell(x, y) == -1):
 		resourceTileMap.set_cell(x, y, resourceTileMap.tile_set.find_tile_by_name("stone"), false, false, false, resourceTileMap.get_cell_autotile_coord(x, y))

@@ -32,6 +32,8 @@ func isValid():
 			$Button.disabled = true
 
 func _on_Button_pressed():
+	$AudioStreamPlayer.seek(0)
+	$AudioStreamPlayer.play()
 	var tileMap = global.world.get_node("TileMap")
 	tileMap.save()
 	get_node(global.worldPath+'/TileMap').reset()

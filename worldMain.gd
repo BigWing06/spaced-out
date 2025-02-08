@@ -22,7 +22,8 @@ func _process(delta):
 		$globalLight.show()
 		$player1Light.hide()
 		$player2Light.hide()
-		
+	if global.currentPlanet == "3" and global.inventory.hasAmount(1, "mysterious_item_1") and global.inventory.hasAmount(1, "mysterious_item_2")and global.inventory.hasAmount(1, "mysterious_item_3")and global.inventory.hasAmount(1, "mysterious_item_4"):
+		get_tree().change_scene("res://Animation/Ending.tscn")
 func setPauseState(state):
 	if state == true:
 		globals.gamePaused = true

@@ -1,10 +1,12 @@
+
+[gd_scene load_steps=10 format=2]
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://Camera2DPlayer1.gd" type="Script" id=3]
 [ext_resource path="res://Camera2DPlayer2.gd" type="Script" id=4]
-[ext_resource path="res://UI/ResourceInfo/ResourceInfo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://videogame2.wav" type="AudioStream" id=5]
 [ext_resource path="res://UI/gameHud/playerHud.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/gameHud/player2Hud.gd" type="Script" id=7]
 [ext_resource path="res://icon.png" type="Texture" id=8]
@@ -102,6 +104,10 @@ margin_right = 855.0
 margin_bottom = 580.0
 texture = ExtResource( 8 )
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -30.0
+autoplay = true
 [node name="addedUI" type="VBoxContainer" parent="."]
 margin_left = 954.0
 margin_top = 9.0

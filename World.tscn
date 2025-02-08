@@ -1,4 +1,5 @@
-[gd_scene load_steps=240 format=2]
+
+[gd_scene load_steps=294 format=2]
 
 [ext_resource path="res://TileMap.gd" type="Script" id=1]
 [ext_resource path="res://resourceImages/Titanium/tileSet.png" type="Texture" id=2]
@@ -23,12 +24,19 @@
 [ext_resource path="res://tiles/miningTiles/pixil-frame-2.png" type="Texture" id=21]
 [ext_resource path="res://tiles/miningTiles/pixil-frame-3.png" type="Texture" id=22]
 [ext_resource path="res://Spaceship.png" type="Texture" id=23]
-[ext_resource path="res://videogame2.wav" type="AudioStream" id=24]
+[ext_resource path="res://resourceImages/teleport2.png" type="Texture" id=24]
 [ext_resource path="res://UI/planetMenu/planetMenu.tscn" type="PackedScene" id=25]
 [ext_resource path="res://tiles/planet2DarkTileSet.png" type="Texture" id=26]
 [ext_resource path="res://tiles/planet4DarkTileSet.png" type="Texture" id=27]
 [ext_resource path="res://tiles/planet1TileSet.png" type="Texture" id=28]
 [ext_resource path="res://tiles/lightMask.png" type="Texture" id=29]
+[ext_resource path="res://resourceImages/teleport1.png" type="Texture" id=30]
+[ext_resource path="res://resourceImages/teleport3.png" type="Texture" id=31]
+[ext_resource path="res://resourceImages/teleport4.png" type="Texture" id=32]
+[ext_resource path="res://resourceImages/Mysterious Item #1/Mysterious Item #1Inventory.png" type="Texture" id=33]
+[ext_resource path="res://resourceImages/Mysterious Item #2/mysterious_item_2.png" type="Texture" id=34]
+[ext_resource path="res://resourceImages/Mysterious Item #3/Mysterious Item #3Inventory.png" type="Texture" id=35]
+[ext_resource path="res://resourceImages/Mysterious Item #4/Mysterious Item #4Inventory.png" type="Texture" id=36]
 [ext_resource path="res://playerResources/Player2.tscn" type="PackedScene" id=37]
 [ext_resource path="res://resourceImages/Coal/coalTileSet.png" type="Texture" id=47]
 [ext_resource path="res://resourceImages/Stone/stonelTileSet.png" type="Texture" id=48]
@@ -2041,6 +2049,62 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 29/z_index = 0
+30/name = "mysterious_item_1"
+30/texture = ExtResource( 30 )
+30/tex_offset = Vector2( 0, 0 )
+30/modulate = Color( 1, 1, 1, 1 )
+30/region = Rect2( 0, 0, 64, 64 )
+30/tile_mode = 0
+30/occluder_offset = Vector2( 0, 0 )
+30/navigation_offset = Vector2( 0, 0 )
+30/shape_offset = Vector2( 0, 0 )
+30/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+30/shape_one_way = false
+30/shape_one_way_margin = 0.0
+30/shapes = [  ]
+30/z_index = 0
+31/name = "mysterious_item_1"
+31/texture = ExtResource( 24 )
+31/tex_offset = Vector2( 0, 0 )
+31/modulate = Color( 1, 1, 1, 1 )
+31/region = Rect2( 0, 0, 64, 64 )
+31/tile_mode = 0
+31/occluder_offset = Vector2( 0, 0 )
+31/navigation_offset = Vector2( 0, 0 )
+31/shape_offset = Vector2( 0, 0 )
+31/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+31/shape_one_way = false
+31/shape_one_way_margin = 0.0
+31/shapes = [  ]
+31/z_index = 0
+32/name = "mysterious_item_3"
+32/texture = ExtResource( 31 )
+32/tex_offset = Vector2( 0, 0 )
+32/modulate = Color( 1, 1, 1, 1 )
+32/region = Rect2( 0, 0, 64, 64 )
+32/tile_mode = 0
+32/occluder_offset = Vector2( 0, 0 )
+32/navigation_offset = Vector2( 0, 0 )
+32/shape_offset = Vector2( 0, 0 )
+32/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+32/shape_one_way = false
+32/shape_one_way_margin = 0.0
+32/shapes = [  ]
+32/z_index = 0
+33/name = "mysterious_item_4"
+33/texture = ExtResource( 32 )
+33/tex_offset = Vector2( 0, 0 )
+33/modulate = Color( 1, 1, 1, 1 )
+33/region = Rect2( 0, 0, 64, 64 )
+33/tile_mode = 0
+33/occluder_offset = Vector2( 0, 0 )
+33/navigation_offset = Vector2( 0, 0 )
+33/shape_offset = Vector2( 0, 0 )
+33/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+33/shape_one_way = false
+33/shape_one_way_margin = 0.0
+33/shapes = [  ]
+33/z_index = 0
 
 [sub_resource type="TileSet" id=5]
 11/name = "coal"
@@ -2181,6 +2245,62 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 16/shape_one_way_margin = 0.0
 16/shapes = [  ]
 16/z_index = 0
+17/name = "mysterious_item_1"
+17/texture = ExtResource( 33 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 64, 64 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shape_offset = Vector2( 0, 0 )
+17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+17/shape_one_way = false
+17/shape_one_way_margin = 0.0
+17/shapes = [  ]
+17/z_index = 0
+18/name = "mysterious_item_2"
+18/texture = ExtResource( 34 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 0, 0, 64, 64 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shape_offset = Vector2( 0, 0 )
+18/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+18/shape_one_way = false
+18/shape_one_way_margin = 0.0
+18/shapes = [  ]
+18/z_index = 0
+19/name = "mysterious_item_3"
+19/texture = ExtResource( 35 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 0, 0, 64, 64 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shape_offset = Vector2( 0, 0 )
+19/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+19/shape_one_way = false
+19/shape_one_way_margin = 0.0
+19/shapes = [  ]
+19/z_index = 0
+20/name = "mysterious_item_4"
+20/texture = ExtResource( 36 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 0, 0, 64, 64 )
+20/tile_mode = 0
+20/occluder_offset = Vector2( 0, 0 )
+20/navigation_offset = Vector2( 0, 0 )
+20/shape_offset = Vector2( 0, 0 )
+20/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+20/shape_one_way = false
+20/shape_one_way_margin = 0.0
+20/shapes = [  ]
+20/z_index = 0
 script = ExtResource( 49 )
 
 [sub_resource type="TileSet" id=10]
@@ -2354,10 +2474,6 @@ visible = false
 
 [node name="pauseMenu" parent="." instance=ExtResource( 7 )]
 visible = false
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 24 )
-autoplay = true
 
 [node name="planetMenu" parent="." instance=ExtResource( 25 )]
 visible = false
