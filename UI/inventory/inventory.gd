@@ -18,7 +18,6 @@ func _ready():
 	for key in globals.resourceInfo.keys():
 		if 'craftResources' in globals.resourceInfo[key].keys():
 			craftResourceList.append(key)
-	print(craftResourceList)
 	for i in range(int(len(craftResourceList)/3+1)):
 		var hbox = HBoxContainer.new()
 		hbox.set('custom_constants/separation', 66)
