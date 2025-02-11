@@ -44,5 +44,5 @@ func _on_Button_pressed():
 	get_node(global.worldPath+'/Player').position = global.playerStartPos[0]
 	get_node(global.worldPath+'/Player2').position = global.playerStartPos[1]
 	print('Planet' + str(int(globals.currentPlanet)+1) + 'Background.png')
-	global.world.get_parent().get_parent().get_node("ViewportPlayer1/ParallaxBackground/ParallaxLayer/Sprite").texture = load("res://tiles/Planet" + str(int(global.currentPlanet)+1) + "Background.png")
-	global.world.get_parent().get_parent().get_parent().get_node("ViewportContainer2/ViewportPlayer2/ParallaxBackground/ParallaxLayer/Sprite").texture = load("res://tiles/Planet" + str(int(global.currentPlanet)+1) + "Background.png")
+	global.world.get_parent().get_parent().get_node("ViewportPlayer1/ParallaxBackground/ParallaxLayer/Sprite").texture = load("res://tiles/planet" + str(int(global.currentPlanet)+1) + "Background.png")
+	global.world.get_parent().get_parent().get_parent().get_node("ViewportContainer2/ViewportPlayer2/ParallaxBackground/ParallaxLayer/Sprite").texture = load("res://tiles/planet" + str(int(global.currentPlanet)+1) + "Background.png")

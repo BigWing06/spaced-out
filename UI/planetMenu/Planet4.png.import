@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Planet4Rock.PNG-b581a38c0f1b9b733e0f7972c668f218.stex"
+path="res://.import/Planet4.png-0750926c19186607eba23a9644549166.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiles/Planet4Rock.PNG"
-dest_files=[ "res://.import/Planet4Rock.PNG-b581a38c0f1b9b733e0f7972c668f218.stex" ]
+source_file="res://UI/planetMenu/Planet4.png"
+dest_files=[ "res://.import/Planet4.png-0750926c19186607eba23a9644549166.stex" ]
 
 [params]
 

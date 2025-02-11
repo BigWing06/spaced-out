@@ -1,4 +1,4 @@
-[gd_scene load_steps=244 format=2]
+[gd_scene load_steps=239 format=2]
 
 [ext_resource path="res://TileMap.gd" type="Script" id=1]
 [ext_resource path="res://resourceImages/Titanium/tileSet.png" type="Texture" id=2]
@@ -12,17 +12,13 @@
 [ext_resource path="res://tiles/planet4TileSet.png" type="Texture" id=10]
 [ext_resource path="res://tiles/planet1TileSetDark.png" type="Texture" id=11]
 [ext_resource path="res://tiles/planet3TileSet.png" type="Texture" id=12]
-[ext_resource path="res://tiles/WorldBorder.png" type="Texture" id=13]
 [ext_resource path="res://UI/gameHud/playerHud.tscn" type="PackedScene" id=14]
-[ext_resource path="res://tiles/miningTiles/mine1.png" type="Texture" id=15]
-[ext_resource path="res://tiles/miningTiles/mine3.png" type="Texture" id=16]
-[ext_resource path="res://tiles/miningTiles/mine2.png" type="Texture" id=17]
 [ext_resource path="res://tiles/planet3DarkTileSet.png" type="Texture" id=18]
 [ext_resource path="res://tiles/miningTiles/pixil-frame-0.png" type="Texture" id=19]
 [ext_resource path="res://tiles/miningTiles/pixil-frame-1.png" type="Texture" id=20]
 [ext_resource path="res://tiles/miningTiles/pixil-frame-2.png" type="Texture" id=21]
 [ext_resource path="res://tiles/miningTiles/pixil-frame-3.png" type="Texture" id=22]
-[ext_resource path="res://SpaceShip.PNG" type="Texture" id=23]
+[ext_resource path="res://Spaceship.png" type="Texture" id=23]
 [ext_resource path="res://videogame2.wav" type="AudioStream" id=24]
 [ext_resource path="res://UI/planetMenu/planetMenu.tscn" type="PackedScene" id=25]
 [ext_resource path="res://tiles/planet2DarkTileSet.png" type="Texture" id=26]
@@ -730,31 +726,7 @@ points = PoolVector2Array( 64, 0, 0, 64, 0, 0, 64, 0 )
 [sub_resource type="ConvexPolygonShape2D" id=268]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 0, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
-points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
-
 [sub_resource type="TileSet" id=1]
-6/name = "WorldBorder.png 6"
-6/texture = ExtResource( 13 )
-6/tex_offset = Vector2( 0, 0 )
-6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 0, 0, 64, 64 )
-6/tile_mode = 0
-6/occluder_offset = Vector2( 0, 0 )
-6/navigation_offset = Vector2( 0, 0 )
-6/shape_offset = Vector2( 0, 0 )
-6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape = SubResource( 9 )
-6/shape_one_way = false
-6/shape_one_way_margin = 1.0
-6/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 9 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-6/z_index = 0
 26/name = "planet1Land"
 26/texture = ExtResource( 3 )
 26/tex_offset = Vector2( 0, 0 )
@@ -2244,48 +2216,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 script = ExtResource( 49 )
 
 [sub_resource type="TileSet" id=10]
-0/name = "mine1.png 0"
-0/texture = ExtResource( 15 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 64, 64 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
-1/name = "mine2.png 1"
-1/texture = ExtResource( 17 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 0, 64, 64 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
-1/z_index = 0
-2/name = "mine3.png 2"
-2/texture = ExtResource( 16 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 0, 64, 64 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape_one_way = false
-2/shape_one_way_margin = 0.0
-2/shapes = [  ]
-2/z_index = 0
 3/name = "pixil-frame-0.png 3"
 3/texture = ExtResource( 19 )
 3/tex_offset = Vector2( 0, 0 )

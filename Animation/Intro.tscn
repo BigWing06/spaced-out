@@ -3,7 +3,7 @@
 [ext_resource path="res://UI/startScreen/startBackground.png" type="Texture" id=1]
 [ext_resource path="res://Animation/animation.gd" type="Script" id=2]
 [ext_resource path="res://Roboto-Black.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://UI/planetMenu/Planet1.PNG" type="Texture" id=4]
+[ext_resource path="res://UI/planetMenu/Planet1.png" type="Texture" id=4]
 [ext_resource path="res://Start Logo.PNG" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
@@ -147,10 +147,10 @@ text = "•"
 [node name="Label2" type="Label" parent="AnimationPlayer/VBoxContainer/2"]
 margin_left = 45.0
 margin_top = 47.0
-margin_right = 519.0
+margin_right = 439.0
 margin_bottom = 83.0
 custom_fonts/font = SubResource( 3 )
-text = "What is that problem, SpacedOut1?"
+text = "What is that problem, Florp5?"
 
 [node name="3" type="HBoxContainer" parent="AnimationPlayer/VBoxContainer"]
 margin_top = 280.0

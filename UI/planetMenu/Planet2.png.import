@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Planet1Background (copy).svg-72b34cfbe2f7ed6c075255124d3b24d5.stex"
+path="res://.import/Planet2.png-43a11deaf54bd7d6dcc6944cca6063ff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiles/Planet1Background (copy).svg"
-dest_files=[ "res://.import/Planet1Background (copy).svg-72b34cfbe2f7ed6c075255124d3b24d5.stex" ]
+source_file="res://UI/planetMenu/Planet2.png"
+dest_files=[ "res://.import/Planet2.png-43a11deaf54bd7d6dcc6944cca6063ff.stex" ]
 
 [params]
 

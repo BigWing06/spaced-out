@@ -127,11 +127,13 @@ func _physics_process(delta):
 			var cameraPos = $Camera2D.get_camera_position()
 			placeTileMapPos = global.world.get_node("TileMap").world_to_map(get_viewport().get_mouse_position()+position-(get_viewport().size)/2)
 			if abs(placeTileMapPos.x-playerPosition.x)>1 or abs(placeTileMapPos.y-playerPosition.y)>1:
-				if globals.world.get_node("TileMap").get_cellv(placeTileMapPos) == -1:
-					if global.inventory.hasAmount(1, "stone"):
-						globals.inventory.add("stone", -1)
-						globals.world.get_node("TileMap").setCell(placeTileMapPos, 25)
-						globals.world.get_node("TileMap").update_bitmask_area(placeTileMapPos)
+				if (placeTileMapPos.y > -15):
+					print(placeTileMapPos.y)
+					if globals.world.get_node("TileMap").get_cellv(placeTileMapPos) == -1:
+						if global.inventory.hasAmount(1, "stone"):
+							globals.inventory.add("stone", -1)
+							globals.world.get_node("TileMap").setCell(placeTileMapPos, 25)
+							globals.world.get_node("TileMap").update_bitmask_area(placeTileMapPos)
 	var tileMap = global.world.get_node("TileMap") #Gets the tilemap node from the main scene 
 	chunk = (tileMap.world_to_map(position)/tileMap.chunkSize).floor()
 	if preChunk != chunk:

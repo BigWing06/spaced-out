@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Planet4RockDark45.png-38ec2e5841c330303255e38dbbc7a16c.stex"
+path="res://.import/Planet2Rock.png-c8eed656a4ebfb5c5382b6bb13923533.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiles/Planet4RockDark45.png"
-dest_files=[ "res://.import/Planet4RockDark45.png-38ec2e5841c330303255e38dbbc7a16c.stex" ]
+source_file="res://tiles/Planet2Rock.png"
+dest_files=[ "res://.import/Planet2Rock.png-c8eed656a4ebfb5c5382b6bb13923533.stex" ]
 
 [params]
 
